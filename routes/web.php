@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [UsersController::class,"index"]);
+Route::get('/', [CustomerController::class,"index"])->name("customer.index");
