@@ -1,4 +1,3 @@
-
 <?php $__env->startSection("main"); ?>
     <!-- Hero Section Begin -->
     <section class="hero-section">
