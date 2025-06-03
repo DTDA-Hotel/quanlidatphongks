@@ -469,7 +469,7 @@
       <!-- ========== header end ========== -->
 
 
-@yield("main")
+<?php echo $__env->yieldContent("main"); ?>
 
 
       <!-- ========== footer start =========== -->
@@ -508,8 +508,8 @@
     <script src="admin/js/dynamic-pie-chart.js"></script>
     <script src="admin/js/moment.min.js"></script>
     <script src="admin/js/fullcalendar.js"></script>
-    {{-- <script src="admin/js/jvectormap.min.js"></script> --}}
-    {{-- <script src="admin/js/world-merc.js"></script> --}}
+    
+    
     <script src="admin/js/polyfill.js"></script>
     <script src="admin/js/main.js"></script>
 
@@ -538,3 +538,4 @@
  </script>
   </body>
 </html>
+<?php /**PATH C:\Users\Admin\Documents\quanlidatphongks\resources\views/admin/layout/main.blade.php ENDPATH**/ ?>
