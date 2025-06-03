@@ -45,24 +45,37 @@
             <i class="icon_search"></i>
         </div>
         <div class="header-configure-area">
-            <div class="language-option">
-                <img src="img/flag.jpg" alt="">
-                <span>EN <i class="fa fa-angle-down"></i></span>
-                <div class="flag-dropdown">
-                    <ul>
-                        <li><a href="#">Zi</a></li>
-                        <li><a href="#">Fr</a></li>
-                    </ul>
-                </div>
-            </div>
-            <a href="#" class="bk-btn">Booking Now</a>
+            @if ( session("locale") =="vi")
+                                <div class="language-option">
+                                <img src="img/vnflag.png" alt="">
+                                <span>VI<i class="fa fa-angle-down"></i></span>
+                                <div class="flag-dropdown">
+                                    <ul>
+                                        <li><a href="/lang/vi">Vi</a></li>
+                                        <li><a href="/lang/en">En</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @elseif ( session("locale") =="en")
+                            <div class="language-option">
+                                <img src="img/flag.jpg" alt="">
+                                <span>EN<i class="fa fa-angle-down"></i></span>
+                                <div class="flag-dropdown">
+                                    <ul>
+                                        <li><a href="/lang/vi">Vi</a></li>
+                                        <li><a href="/lang/en">En</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
+            <a href="#" class="bk-btn">Book Now!</a>
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./rooms.html">Rooms</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./pages.html">Pages</a>
+                <li class="active"><a href="./index.html"> {{ __("messages.Home") }} </a></li>
+                <li><a href="./rooms.html">{{ __("messages.Rooms") }}</a></li>
+                <li><a href="./about-us.html">{{ __("messages.AboutUs") }}</a></li>
+                <li><a href="./pages.html">{{ __("messages.Pages") }}</a>
                     <ul class="dropdown">
                         <li><a href="./room-details.html">Room Details</a></li>
                         <li><a href="#">Deluxe Room</a></li>
@@ -70,7 +83,7 @@
                         <li><a href="#">Premium Room</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">News</a></li>
+                <li><a href="./blog.html"> {{ __("messages.News") }} </a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -87,7 +100,7 @@
         </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
-
+{{-- {{ App::getLocale() }} --}}
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="top-nav">
@@ -108,16 +121,30 @@
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
                             <a href="#" class="bk-btn">Booking Now</a>
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN <i class="fa fa-angle-down"></i></span>
+                            @if ( session("locale") =="vi" || session("locale")==null ||session("locale")=="")
+                                <div class="language-option">
+                                <img src="img/vnflag.png" alt="">
+                                <span>VI<i class="fa fa-angle-down"></i></span>
                                 <div class="flag-dropdown">
                                     <ul>
-                                        <li><a href="#">Zi</a></li>
-                                        <li><a href="#">Fr</a></li>
+                                        <li><a href="/lang/vi">Vi</a></li>
+                                        <li><a href="/lang/en">En</a></li>
                                     </ul>
                                 </div>
                             </div>
+                            @elseif ( session("locale") =="en")
+                            <div class="language-option">
+                                <img src="img/flag.jpg" alt="">
+                                <span>EN<i class="fa fa-angle-down"></i></span>
+                                <div class="flag-dropdown">
+                                    <ul>
+                                        <li><a href="/lang/vi">Vi</a></li>
+                                        <li><a href="/lang/en">En</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            @endif
+                            
                         </div>
                     </div>
                 </div>
@@ -137,10 +164,10 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index.html">Home</a></li>
-                                    <li><a href="./rooms.html">Rooms</a></li>
-                                    <li><a href="./about-us.html">About Us</a></li>
-                                    <li><a href="./pages.html">Pages</a>
+                                    <li class="active"><a href="./index.html">{{ __("messages.Home") }}</a></li>
+                                    <li><a href="./rooms.html"> {{ __("messages.Rooms") }} </a></li>
+                                    <li><a href="./about-us.html">{{ __("messages.AboutUs") }}</a></li>
+                                    <li><a href="./pages.html">{{ __("messages.Pages") }}</a>
                                         <ul class="dropdown">
                                             <li><a href="./room-details.html">Room Details</a></li>
                                             <li><a href="./blog-details.html">Blog Details</a></li>
@@ -148,8 +175,8 @@
                                             <li><a href="#">Premium Room</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html">News</a></li>
-                                    <li><a href="./contact.html">Contact</a></li>
+                                    <li><a href="./blog.html">{{ __("messages.News") }}</a></li>
+                                    <li><a href="./contact.html">{{ __("messages.Contact") }}</a></li>
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
