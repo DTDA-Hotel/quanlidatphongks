@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,7 @@ Route::prefix("/")->group(function(){
 
 Route::prefix("/administrator")->group(function(){
     Route::get("/",[AdminController::class,"index"])->name("admin.index");
+    Route::get("/category",[CategoryController::class,"index"])->name("admin.category");
+    Route::get("/category/create",[CategoryController::class,"create"])->name("admin.createcat");
+    Route::post("/category/add",[CategoryController::class,"store"])->name("admin.addcat");
 });

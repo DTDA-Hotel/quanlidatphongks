@@ -73,7 +73,7 @@
                           <td class="min-width">
                             <div class="lead">
                               <div class="lead-image">
-                                <img src="admin/images/lead/lead-1.png" alt="" />
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-1.png" alt="" />
                               </div>
                               <div class="lead-text">
                                 <p>Courtney Henry</p>
@@ -102,7 +102,7 @@
                           <td class="min-width">
                             <div class="lead">
                               <div class="lead-image">
-                                <img src="admin/images/lead/lead-2.png" alt="" />
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-2.png" alt="" />
                               </div>
                               <div class="lead-text">
                                 <p>John Doe</p>
@@ -131,7 +131,7 @@
                           <td class="min-width">
                             <div class="lead">
                               <div class="lead-image">
-                                <img src="admin/images/lead/lead-3.png" alt="" />
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-3.png" alt="" />
                               </div>
                               <div class="lead-text">
                                 <p>David Smith</p>
@@ -160,7 +160,7 @@
                           <td class="min-width">
                             <div class="lead">
                               <div class="lead-image">
-                                <img src="admin/images/lead/lead-4.png" alt="" />
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-4.png" alt="" />
                               </div>
                               <div class="lead-text">
                                 <p>Jonathon</p>
@@ -189,7 +189,7 @@
                           <td>
                             <div class="lead">
                               <div class="lead-image">
-                                <img src="admin/images/lead/lead-5.png" alt="" />
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-5.png" alt="" />
                               </div>
                               <div class="lead-text">
                                 <p>Anna Lee</p>
@@ -218,7 +218,7 @@
                           <td>
                             <div class="lead">
                               <div class="lead-image">
-                                <img src="admin/images/lead/lead-6.png" alt="" />
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-6.png" alt="" />
                               </div>
                               <div class="lead-text">
                                 <p>Gray Simon</p>
@@ -577,7 +577,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <img src="admin/images/lead/lead-1.png" alt="" />
+                              <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-1.png" alt="" />
                             </div>
                           </td>
                           <td class="min-width">
@@ -604,7 +604,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <img src="admin/images/lead/lead-2.png" alt="" />
+                              <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-2.png" alt="" />
                             </div>
                           </td>
                           <td class="min-width">
@@ -631,7 +631,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <img src="admin/images/lead/lead-3.png" alt="" />
+                              <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-3.png" alt="" />
                             </div>
                           </td>
                           <td>
@@ -658,7 +658,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <img src="admin/images/lead/lead-4.png" alt="" />
+                              <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-4.png" alt="" />
                             </div>
                           </td>
                           <td>
@@ -685,7 +685,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <img src="admin/images/lead/lead-5.png" alt="" />
+                              <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-5.png" alt="" />
                             </div>
                           </td>
                           <td>
@@ -712,7 +712,7 @@
                         <tr>
                           <td>
                             <div class="employee-image">
-                              <img src="admin/images/lead/lead-6.png" alt="" />
+                              <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-6.png" alt="" />
                             </div>
                           </td>
                           <td>
