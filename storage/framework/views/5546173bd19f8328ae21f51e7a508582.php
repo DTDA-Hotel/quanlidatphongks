@@ -45,7 +45,7 @@
             <i class="icon_search"></i>
         </div>
         <div class="header-configure-area">
-            @if ( session("locale") =="vi")
+            <?php if( session("locale") =="vi"): ?>
                                 <div class="language-option">
                                 <img src="img/vnflag.png" alt="">
                                 <span>VI<i class="fa fa-angle-down"></i></span>
@@ -56,7 +56,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            @elseif ( session("locale") =="en")
+                            <?php elseif( session("locale") =="en"): ?>
                             <div class="language-option">
                                 <img src="img/flag.jpg" alt="">
                                 <span>EN<i class="fa fa-angle-down"></i></span>
@@ -67,15 +67,15 @@
                                     </ul>
                                 </div>
                             </div>
-                            @endif
+                            <?php endif; ?>
             <a href="#" class="bk-btn">Book Now!</a>
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="#"> {{ __("messages.Home") }} </a></li>
-                <li><a href="#">{{ __("messages.Rooms") }}</a></li>
-                <li><a href="#">{{ __("messages.AboutUs") }}</a></li>
-                <li><a href="#">{{ __("messages.Pages") }}</a>
+                <li class="active"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
+                <li><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
+                <li><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                <li><a href="#"><?php echo e(__("messages.Pages")); ?></a>
                     <ul class="dropdown">
                         <!-- <li><a href="#">Room Details</a></li> -->
                         <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -83,7 +83,7 @@
                         <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                 </li>
-                <li><a href=""> {{ __("messages.News") }} </a></li>
+                <li><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
                 <li><a href="">Contact</a></li>
             </ul>
         </nav>
@@ -100,7 +100,7 @@
         </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
-{{-- {{ App::getLocale() }} --}}
+
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="top-nav">
@@ -121,7 +121,7 @@
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
                             <a href="#" class="bk-btn">Booking Now</a>
-                            @if ( session("locale") =="vi" || session("locale")==null ||session("locale")=="")
+                            <?php if( session("locale") =="vi" || session("locale")==null ||session("locale")==""): ?>
                                 <div class="language-option">
                                 <img src="img/vnflag.png" alt="">
                                 <span>VI<i class="fa fa-angle-down"></i></span>
@@ -132,7 +132,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            @elseif ( session("locale") =="en")
+                            <?php elseif( session("locale") =="en"): ?>
                             <div class="language-option">
                                 <img src="img/flag.jpg" alt="">
                                 <span>EN<i class="fa fa-angle-down"></i></span>
@@ -143,7 +143,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            @endif
+                            <?php endif; ?>
                             
                         </div>
                     </div>
@@ -164,10 +164,10 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index.html">{{ __("messages.Home") }}</a></li>
-                                    <li><a href="./rooms.html"> {{ __("messages.Rooms") }} </a></li>
-                                    <li><a href="./about-us.html">{{ __("messages.AboutUs") }}</a></li>
-                                    <li><a href="./pages.html">{{ __("messages.Pages") }}</a>
+                                    <li class="active"><a href="./index.html"><?php echo e(__("messages.Home")); ?></a></li>
+                                    <li><a href="./rooms.html"> <?php echo e(__("messages.Rooms")); ?> </a></li>
+                                    <li><a href="./about-us.html"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                                    <li><a href="./pages.html"><?php echo e(__("messages.Pages")); ?></a>
                                         <ul class="dropdown">
                         <!-- <li><a href="#">Room Details</a></li> -->
                         <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -175,8 +175,8 @@
                         <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                                     </li>
-                                    <li><a href="./blog.html">{{ __("messages.News") }}</a></li>
-                                    <li><a href="./contact.html">{{ __("messages.Contact") }}</a></li>
+                                    <li><a href="./blog.html"><?php echo e(__("messages.News")); ?></a></li>
+                                    <li><a href="./contact.html"><?php echo e(__("messages.Contact")); ?></a></li>
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
@@ -192,7 +192,7 @@
 
 
 
-@yield("main")
+<?php echo $__env->yieldContent("main"); ?>
 
 
 
@@ -287,4 +287,4 @@
     <script src="js/main.js"></script>
 </body>
 
-</html>
+</html><?php /**PATH E:\PHP3\quanlidatphongks\resources\views/layout/main.blade.php ENDPATH**/ ?>

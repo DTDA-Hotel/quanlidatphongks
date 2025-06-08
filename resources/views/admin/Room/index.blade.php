@@ -2,12 +2,12 @@
 
 @section("main")
 {{-- this is category page --}}
-<a href="{{ route("admin.createcat") }}" class="btn btn-primary">Thêm danh mục</a>
+<a href="{{ route("admin.addroom") }}" class="btn btn-primary">Thêm phòng</a>
           <div class="tables-wrapper">
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-style mb-30">
-                  <h6 class="mb-10">Danh sách danh mục</h6>
+                  <h6 class="mb-10">Danh sách phòng</h6>
                   {{-- <p class="text-sm mb-20">
                     For basic styling—light padding and only horizontal
                     dividers—use the class table.
@@ -23,7 +23,10 @@
                             <h6>Tên</h6>
                           </th>
                           <th>
-                            <h6>Ảnh</h6>
+                            <h6>Danh mục</h6>
+                          </th>
+                          <th>
+                            <h6>Mô tả</h6>
                           </th>
                           <th>
                             <h6>Tạo ngày</h6>
@@ -38,7 +41,7 @@
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                        @foreach ($cat as $k )
+                       @foreach ( $roomlist as $k )
                         <tr>
                           <td>
                             {{ $k->id }}
@@ -47,35 +50,24 @@
                             {{ $k->name }}
                           </td>
                           <td class="min-width">
-                            @if ($k->image)
-                            {{ $k->image }}
-                            @else
-                              Không có
-                            @endif
-                          </td>
-                          <td class="min-width">
-                            {{ $k->created_at }}
-                          </td>
-                          <td class="min-width">
-                            {{ $k->updated_at??"Chưa sửa lần nào" }}
+                           {{ $k->category_id }}
                           </td>
                           <td>
-                            <div class="action">
-                              <!-- <a class="text-warning" >
-                                <img src="{{ asset(url("")) }}/admin/images/pen-solid.svg" alt="">
-                              </a> -->
-                              <a href="{{ route("admin.editcat",["id"=>$k->id]) }}" class="text-warning" style="padding:4px;">
-                                <i class="lni lni-pencil" ></i>
-                              </a>
-                              <br>
-                              <a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="{{ route("admin.delcat",["id"=>$k->id]) }}" class="text-danger" style="padding:4px;">
-                                <i class="lni lni-trash-can"></i>
-                              </a>
-                            </div>
+                           <p class="overflow-y-auto"> {{ $k->description }}</p>
+                          </td>
+                          <td class="min-width">
+                           {{ $k->created_at }}
+                          </td>
+                          <td class="min-width">
+                            {{ $k->updated_at }}
+                          </td>
+                          <td>
+                            <a class="btn btn-warning" href="{{ route("admin.editroom",["id"=>$k->id]) }}">Sửa</a>
+                            <a class="btn btn-danger" href="{{ route("admin.delroom",["id"=>$k->id]) }}">Xoá</a>
                           </td>
                         </tr>
-                        @endforeach
                         <!-- end table row -->
+                         @endforeach
                       </tbody>
                     </table>
                     <!-- end table -->

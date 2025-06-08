@@ -1,17 +1,12 @@
-@extends("admin.layout.main")
+<?php $__env->startSection("main"); ?>
 
-@section("main")
-{{-- this is category page --}}
-<a href="{{ route("admin.createcat") }}" class="btn btn-primary">Thêm danh mục</a>
+<a href="<?php echo e(route("admin.createcat")); ?>" class="btn btn-primary">Thêm danh mục</a>
           <div class="tables-wrapper">
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-style mb-30">
                   <h6 class="mb-10">Danh sách danh mục</h6>
-                  {{-- <p class="text-sm mb-20">
-                    For basic styling—light padding and only horizontal
-                    dividers—use the class table.
-                  </p> --}}
+                  
                   <div class="table-wrapper table-responsive">
                     <table class="table">
                       <thead>
@@ -38,43 +33,48 @@
                         <!-- end table row-->
                       </thead>
                       <tbody>
-                        @foreach ($cat as $k )
+                        <?php $__currentLoopData = $cat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
                           <td>
-                            {{ $k->id }}
+                            <?php echo e($k->id); ?>
+
                           </td>
                           <td class="min-width">
-                            {{ $k->name }}
+                            <?php echo e($k->name); ?>
+
                           </td>
                           <td class="min-width">
-                            @if ($k->image)
-                            {{ $k->image }}
-                            @else
+                            <?php if($k->image): ?>
+                            <?php echo e($k->image); ?>
+
+                            <?php else: ?>
                               Không có
-                            @endif
+                            <?php endif; ?>
                           </td>
                           <td class="min-width">
-                            {{ $k->created_at }}
+                            <?php echo e($k->created_at); ?>
+
                           </td>
                           <td class="min-width">
-                            {{ $k->updated_at??"Chưa sửa lần nào" }}
+                            <?php echo e($k->updated_at??"Chưa sửa lần nào"); ?>
+
                           </td>
                           <td>
                             <div class="action">
                               <!-- <a class="text-warning" >
-                                <img src="{{ asset(url("")) }}/admin/images/pen-solid.svg" alt="">
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/pen-solid.svg" alt="">
                               </a> -->
-                              <a href="{{ route("admin.editcat",["id"=>$k->id]) }}" class="text-warning" style="padding:4px;">
+                              <a href="<?php echo e(route("admin.editcat",["id"=>$k->id])); ?>" class="text-warning" style="padding:4px;">
                                 <i class="lni lni-pencil" ></i>
                               </a>
                               <br>
-                              <a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="{{ route("admin.delcat",["id"=>$k->id]) }}" class="text-danger" style="padding:4px;">
+                              <a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<?php echo e(route("admin.delcat",["id"=>$k->id])); ?>" class="text-danger" style="padding:4px;">
                                 <i class="lni lni-trash-can"></i>
                               </a>
                             </div>
                           </td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <!-- end table row -->
                       </tbody>
                     </table>
@@ -88,4 +88,5 @@
             <!-- end row -->
           </div>
           <!-- ========== tables-wrapper end ========== -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("admin.layout.main", array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH E:\PHP3\quanlidatphongks\resources\views/admin/category/category.blade.php ENDPATH**/ ?>
