@@ -14,6 +14,12 @@ class RoomController extends Controller
     public function index()
     {
         $roomlist = Room::get();
+        // $cat = Category::get();
+        foreach($roomlist as $k=>$v){
+           $cats= Category::find($v['category_id']);
+           $roomlist[$k]["category_name"] = $cats["name"];
+            // dd($t);
+        }
         // dd($roomlist);
         return view("admin.Room.index",compact("roomlist"));
     }
@@ -26,7 +32,18 @@ class RoomController extends Controller
         $catelist = Category::get();
         return view("admin.Room.add",compact("catelist"));
     }
-
+    public function totest(){
+        return view("test");
+    }
+    public function uptest(Request $request){
+        if($request->hasFile("pimage")){
+            $img = $request->file("pimage");
+            $filename=time().'_'.$img->getClientOriginalName();
+            $img->storeAs("/upload",$filename);
+        }else{
+            echo "error";
+        }
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -34,9 +51,18 @@ class RoomController extends Controller
     {
         $name = $request->input("name");
         $cate = $request->input("category");
+        $amenities = $request->input("amenities");
+        $pos = $request->input("position");
+        $filename = "" ;
         $desc = $request->input("desc","");
         try {
-            Room::create(["name"=>$name,"category_id"=>$cate,"description"=>$desc]);
+        if($request->hasFile("pimage")){
+            $img = $request->file("pimage");
+            $filename=time().'_'.$img->getClientOriginalName();
+            $img->storeAs("/upload",$filename);
+        }
+        
+            Room::create(["name"=>$name,"category_id"=>$cate,"pimage"=>$filename,"description"=>$desc,"amenities"=>$amenities,"position"=>$pos]);
             return redirect(route("admin.roomlist"));
         } catch (\Throwable $th) {
             throw $th;
@@ -67,11 +93,25 @@ class RoomController extends Controller
      */
     public function update(Request $request,$id)
     {
+        // $ro = Room::findOrFail($id);
+        $filename ="";
         $name= $request->input("name");
         $cat= $request->input("category");
         $desc= $request->input("desc");
-        Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"description"=>$desc]);
-        return redirect(route("admin.roomlist"));
+        $ame = $request->input("amenities");
+        $pos = $request->input("position");
+        $oimg = $request->input("old_img");
+        if($request->hasFile("pimage")){
+            $img = $request->file("pimage");
+            $filename = time()."_".$img->getClientOriginalName();
+            $img->storeAs("/upload",$filename);
+            Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$filename,"description"=>$desc,"amenities"=>$ame,"position"=>$pos]);
+            return redirect(route("admin.roomlist"));
+        }elseif($request->file("pimage")==null||$request->file("pimage")==[]){
+            Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$oimg,"description"=>$desc,"amenities"=>$ame,"position"=>$pos]);
+            return redirect(route("admin.roomlist"));
+        }
+        
     }
 
     /**

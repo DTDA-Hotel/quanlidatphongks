@@ -15,7 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->text("description");
+            $table->string("pimage")->nullable();
+            $table->text("description")->nullable();
+            $table->text("review")->nullable();
+            $table->tinyInteger("rating")->default(5);
+            $table->text("amenities");
+            $table->string("position");
+            $table->boolean("isInUse")->default(0);
             $table->timestamps();
         });
     }
