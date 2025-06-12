@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\khoanh;
 use Illuminate\Http\Request;
 
 class ImageStorageController extends Controller
@@ -12,7 +13,8 @@ class ImageStorageController extends Controller
      */
     public function index()
     {
-        //
+        $imglist = khoanh::get();
+        return view("admin.storage.image.index",compact("imglist"));
     }
 
     /**

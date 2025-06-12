@@ -52,23 +52,16 @@
             </a>
             <ul id="ddmenu_1" class="collapse show dropdown-nav">
               <li>
-                <a href="<?php echo e(route("admin.category")); ?>" class="active"> Danh mục </a>
+                <a href="<?php echo e(route("admin.category")); ?>" > Danh mục </a>
+                <!-- class="active" -->
+              </li>
+              <li>
+                <a href="<?php echo e(route("admin.roomlist")); ?>">Các phòng</a>
               </li>
             </ul>
           </li>
-          
         </ul>
       </nav>
-      <div class="promo-box">
-        <div class="promo-icon">
-          <img class="mx-auto" src="<?php echo e(asset(url(""))); ?>/admin/images/logo/logo-icon-big.svg" alt="Logo">
-        </div>
-        <h3>Upgrade to PRO</h3>
-        <p>Improve your development process and start doing more with PlainAdmin PRO!</p>
-        <a href="https://plainadmin.com/pro" target="_blank" rel="nofollow" class="main-btn primary-btn btn-hover">
-          Upgrade to PRO
-        </a>
-      </div>
     </aside>
     <div class="overlay"></div>
     <!-- ======== sidebar-nav end =========== -->

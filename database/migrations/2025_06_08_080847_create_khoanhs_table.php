@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('khoanhs', function (Blueprint $table) {
             $table->id();
             $table->string("imgname");
-            $table->foreignId("roomid")->constrained()->onDelete("cascade");
+            // $table->foreignId("roomid")->constrained()->onDelete("cascade");
+            $table->unsignedBigInteger("roomid");
+            $table->foreign('roomid')->references('id')->on('rooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

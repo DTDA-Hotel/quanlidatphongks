@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ImageStorageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
@@ -34,4 +35,11 @@ Route::prefix("/administrator")->group(function(){
         Route::put("/update/{id}",[RoomController::class,"update"])->name("admin.updroom");
         Route::post("/store",[RoomController::class,"store"])->name("admin.storeroom");
     });
+    Route::prefix("/storage")->group(function(){
+        Route::prefix("/image")->group(function(){
+            Route::get("/",[ImageStorageController::class,"index"])->name("storage.image");
+        });
+    });
+    // Route::get("/tup",[RoomController::class,"totest"])->name("totest");
+    // Route::post("/testupload",[RoomController::class,"uptest"])->name("testing");
 });
