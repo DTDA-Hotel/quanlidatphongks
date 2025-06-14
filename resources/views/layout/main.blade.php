@@ -66,6 +66,7 @@
                                         <li><a href="/lang/en">En</a></li>
                                     </ul>
                                 </div>
+                              
                             </div>
                             @endif
             <a href="#" class="bk-btn">Book Now!</a>
@@ -144,6 +145,8 @@
                                 </div>
                             </div>
                             @endif
+                            <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign Out </a>
+
                             
                         </div>
                     </div>

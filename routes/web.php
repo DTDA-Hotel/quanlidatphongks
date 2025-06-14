@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageStorageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('lang/{locale}', function ($locale) {
@@ -13,7 +15,7 @@ Route::get('lang/{locale}', function ($locale) {
     }
     return redirect(route("client.index"));
 });
-Route::prefix("/")->group(function(){
+Route::middleware( 'auth')->prefix("/")->group(function(){
     Route::get('/', [CustomerController::class,"index"])->name("client.index");
 });
 
@@ -43,3 +45,13 @@ Route::prefix("/administrator")->group(function(){
     // Route::get("/tup",[RoomController::class,"totest"])->name("totest");
     // Route::post("/testupload",[RoomController::class,"uptest"])->name("testing");
 });
+
+
+
+    Route::get('register', [AuthController::class, 'register'])->name('register');
+    Route::post('register', [AuthController::class, 'postRegister'])->name('postRegister');
+
+    Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'postLogin'])->name('postLogin');
+
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');

@@ -1,5 +1,12 @@
+
 @extends("layout.main")
 @section("main")
+@if(session('error'))
+    <div class="alert alert-success">
+        {{ session('error') }}
+    </div>
+@endif
+
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="container">
