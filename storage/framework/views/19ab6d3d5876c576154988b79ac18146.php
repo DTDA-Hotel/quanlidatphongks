@@ -1,15 +1,7 @@
-
-
 <?php $__env->startSection("main"); ?>
 
 <a href="<?php echo e(route("admin.createcat")); ?>" class="btn btn-primary">Thêm danh mục</a>
           <div class="tables-wrapper">
-            
-            <!-- end row -->
-
-            
-            <!-- end row -->
-
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-style mb-30">
@@ -42,8 +34,6 @@
                       </thead>
                       <tbody>
                         <?php $__currentLoopData = $cat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            
-                        
                         <tr>
                           <td>
                             <?php echo e($k->id); ?>
@@ -54,8 +44,12 @@
 
                           </td>
                           <td class="min-width">
-                            <?php echo e($k->image??"Không có"); ?>
+                            <?php if($k->image): ?>
+                            <?php echo e($k->image); ?>
 
+                            <?php else: ?>
+                              Không có
+                            <?php endif; ?>
                           </td>
                           <td class="min-width">
                             <?php echo e($k->created_at); ?>
@@ -67,9 +61,16 @@
                           </td>
                           <td>
                             <div class="action">
-                              <button class="text-danger">
+                              <!-- <a class="text-warning" >
+                                <img src="<?php echo e(asset(url(""))); ?>/admin/images/pen-solid.svg" alt="">
+                              </a> -->
+                              <a href="<?php echo e(route("admin.editcat",["id"=>$k->id])); ?>" class="text-warning" style="padding:4px;">
+                                <i class="lni lni-pencil" ></i>
+                              </a>
+                              <br>
+                              <a onclick="return confirm('Bạn có chắc muốn xóa không?')" href="<?php echo e(route("admin.delcat",["id"=>$k->id])); ?>" class="text-danger" style="padding:4px;">
                                 <i class="lni lni-trash-can"></i>
-                              </button>
+                              </a>
                             </div>
                           </td>
                         </tr>
