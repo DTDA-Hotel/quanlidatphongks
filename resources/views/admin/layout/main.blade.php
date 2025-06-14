@@ -54,6 +54,9 @@
               <li>
                 <a href="{{ route("admin.category") }}" class="active"> Danh mục </a>
               </li>
+              <li>
+                <a href="{{ route("admin.account") }}" class="active"> Tài khoản </a>
+              </li>
             </ul>
           </li>
           {{-- <li class="nav-item nav-item-has-children">
@@ -419,7 +422,6 @@
                           <img src="{{ asset(url("")) }}/admin/images/profile/profile-image.png" alt="" />
                         </div>
                         <div>
-                          <h6 class="fw-500">Adam Joe</h6>
                           <p>Admin</p>
                         </div>
                       </div>
@@ -456,7 +458,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                      <a href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign Out </a>
                     </li>
                   </ul>
                 </div>
