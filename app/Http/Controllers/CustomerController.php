@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
+// use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
@@ -13,6 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        session::put(["locale"=>"vi"]);
         return view("client.index");
     }
 
