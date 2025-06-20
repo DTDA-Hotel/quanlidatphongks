@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="{{ asset(url("")) }}/admin/images/favicon.svg" type="image/x-icon" />
+  <link rel="shortcut icon" href="<?php echo e(asset(url(""))); ?>/admin/images/favicon.svg" type="image/x-icon" />
   <title>Trang quản trị</title>
 
   <!-- ========== All CSS files linkup ========= -->
-  <link rel="stylesheet" href="{{ asset(url("")) }}/admin/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="{{ asset(url("")) }}/admin/css/lineicons.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="{{ asset(url("")) }}/admin/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="{{ asset(url("")) }}/admin/css/fullcalendar.css" />
-  <link rel="stylesheet" href="{{ asset(url("")) }}/admin/css/fullcalendar.css" />
-  <link rel="stylesheet" href="{{ asset(url("")) }}/admin/css/main.css" />
+  <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/admin/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/admin/css/lineicons.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/admin/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/admin/css/fullcalendar.css" />
+  <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/admin/css/fullcalendar.css" />
+  <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/admin/css/main.css" />
 </head>
 
 <body>
@@ -23,52 +23,54 @@
   </div>
   <!-- ======== Preloader =========== -->
 
-    <!-- ======== sidebar-nav start =========== -->
-    <aside class="sidebar-nav-wrapper">
-      <div class="navbar-logo">
-        <a href="index.html">
-          <img src="{{ asset(url("")) }}/admin/images/logo/logo.svg" alt="logo" />
-        </a>
-      </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li class="nav-item nav-item-has-children">
-            <a
-              href="#0"
-              data-bs-toggle="collapse"
-              data-bs-target="#ddmenu_1"
-              aria-controls="ddmenu_1"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M8.74999 18.3333C12.2376 18.3333 15.1364 15.8128 15.7244 12.4941C15.8448 11.8143 15.2737 11.25 14.5833 11.25H9.99999C9.30966 11.25 8.74999 10.6903 8.74999 10V5.41666C8.74999 4.7263 8.18563 4.15512 7.50586 4.27556C4.18711 4.86357 1.66666 7.76243 1.66666 11.25C1.66666 15.162 4.83797 18.3333 8.74999 18.3333Z" />
-                  <path
-                    d="M17.0833 10C17.7737 10 18.3432 9.43708 18.2408 8.75433C17.7005 5.14918 14.8508 2.29947 11.2457 1.75912C10.5629 1.6568 10 2.2263 10 2.91665V9.16666C10 9.62691 10.3731 10 10.8333 10H17.0833Z" />
-                </svg>
-              </span>
-              <span class="text">Dashboard</span>
-            </a>
-            <ul id="ddmenu_1" class="collapse show dropdown-nav">
-              <li>
-                <a href="{{ route("admin.category") }}" > Danh mục </a>
-                <!-- class="active" -->
-              </li>
-              <li>
-                <a href="{{ route("admin.roomlist") }}">Các phòng</a>
-              </li>
-              <li>
-                <a href="{{ route("admin.account") }}" class="active"> Tài khoản </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-    </aside>
-    <div class="overlay"></div>
-    <!-- ======== sidebar-nav end =========== -->
+  <!-- ======== sidebar-nav start =========== -->
+  <aside class="sidebar-nav-wrapper">
+    <div class="navbar-logo">
+      <a href="index.html">
+        <img src="<?php echo e(asset(url(""))); ?>/admin/images/logo/logo.svg" alt="logo" />
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item nav-item-has-children">
+          <a
+            href="#0"
+            data-bs-toggle="collapse"
+            data-bs-target="#ddmenu_1"
+            aria-controls="ddmenu_1"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.74999 18.3333C12.2376 18.3333 15.1364 15.8128 15.7244 12.4941C15.8448 11.8143 15.2737 11.25 14.5833 11.25H9.99999C9.30966 11.25 8.74999 10.6903 8.74999 10V5.41666C8.74999 4.7263 8.18563 4.15512 7.50586 4.27556C4.18711 4.86357 1.66666 7.76243 1.66666 11.25C1.66666 15.162 4.83797 18.3333 8.74999 18.3333Z" />
+                <path
+                  d="M17.0833 10C17.7737 10 18.3432 9.43708 18.2408 8.75433C17.7005 5.14918 14.8508 2.29947 11.2457 1.75912C10.5629 1.6568 10 2.2263 10 2.91665V9.16666C10 9.62691 10.3731 10 10.8333 10H17.0833Z" />
+              </svg>
+            </span>
+            <span class="text">Dashboard</span>
+          </a>
+          <ul id="ddmenu_1" class="collapse show dropdown-nav">
+            <li>
+              <a href="<?php echo e(route("admin.category")); ?>"> Danh mục </a>
+              <!-- class="active" -->
+            </li>
+            <li>
+              <a href="<?php echo e(route("admin.roomlist")); ?>">Các phòng</a>
+            </li>
+            <li>
+              <a href="<?php echo e(route("admin.account")); ?>" class="active"> Tài khoản </a>
+            </li>
+            <li>
+              <a href="<?php echo e(route("admin.bills.index")); ?>">Hóa đơn</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <div class="overlay"></div>
+  <!-- ======== sidebar-nav end =========== -->
 
   <!-- ======== main-wrapper start =========== -->
   <main class="main-wrapper">
@@ -111,7 +113,7 @@
                   <li>
                     <a href="#0">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/lead/lead-6.png" alt="" />
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-6.png" alt="" />
                       </div>
                       <div class="content">
                         <h6>
@@ -131,7 +133,7 @@
                   <li>
                     <a href="#0">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/lead/lead-1.png" alt="" />
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-1.png" alt="" />
                       </div>
                       <div class="content">
                         <h6>
@@ -169,7 +171,7 @@
                   <li>
                     <a href="#0">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/lead/lead-5.png" alt="" />
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-5.png" alt="" />
                       </div>
                       <div class="content">
                         <h6>Jacob Jones</h6>
@@ -181,7 +183,7 @@
                   <li>
                     <a href="#0">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/lead/lead-3.png" alt="" />
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-3.png" alt="" />
                       </div>
                       <div class="content">
                         <h6>John Doe</h6>
@@ -193,7 +195,7 @@
                   <li>
                     <a href="#0">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/lead/lead-2.png" alt="" />
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/lead/lead-2.png" alt="" />
                       </div>
                       <div class="content">
                         <h6>Anee Lee</h6>
@@ -212,7 +214,7 @@
                   <div class="profile-info">
                     <div class="info">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/profile/profile-image.png" alt="" />
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/profile/profile-image.png" alt="" />
                       </div>
                       <div>
                         <p>Admin</p>
@@ -224,7 +226,7 @@
                   <li>
                     <div class="author-info flex items-center !p-1">
                       <div class="image">
-                        <img src="{{ asset(url("")) }}/admin/images/profile/profile-image.png" alt="image">
+                        <img src="<?php echo e(asset(url(""))); ?>/admin/images/profile/profile-image.png" alt="image">
                       </div>
                       <div class="content">
                         <h4 class="text-sm">Adam Joe</h4>
@@ -251,7 +253,7 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign Out </a>
+                    <a href="<?php echo e(route('logout')); ?>"> <i class="lni lni-exit"></i> Sign Out </a>
                   </li>
                 </ul>
               </div>
@@ -264,7 +266,7 @@
     <!-- ========== header end ========== -->
 
 
-    @yield("main")
+    <?php echo $__env->yieldContent("main"); ?>
 
 
     <!-- ========== footer start =========== -->
@@ -298,25 +300,39 @@
   <!-- ======== main-wrapper end =========== -->
 
   <!-- ========= All Javascript files linkup ======== -->
-  <script src="{{ asset(url("")) }}/admin/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ asset(url("")) }}/admin/js/Chart.min.js"></script>
-  <script src="{{ asset(url("")) }}/admin/js/dynamic-pie-chart.js"></script>
-  <script src="{{ asset(url("")) }}/admin/js/moment.min.js"></script>
-  <script src="{{ asset(url("")) }}/admin/js/fullcalendar.js"></script>
-  {{-- <script src="{{ asset(url("")) }}/admin/js/jvectormap.min.js"></script> --}}
-  {{-- <script src="{{ asset(url("")) }}/admin/js/world-merc.js"></script> --}}
-  <script src="{{ asset(url("")) }}/admin/js/polyfill.js"></script>
-  <script src="{{ asset(url("")) }}/admin/js/main.js"></script>
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/Chart.min.js"></script>
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/dynamic-pie-chart.js"></script>
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/moment.min.js"></script>
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/fullcalendar.js"></script>
+  
+  
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/polyfill.js"></script>
+  <script src="<?php echo e(asset(url(""))); ?>/admin/js/main.js"></script>
 
-    <script>
-      // ======== jvectormap activation
-      var markers = [
-        { name: "Egypt", coords: [26.8206, 30.8025] },
-        { name: "Russia", coords: [61.524, 105.3188] },
-        { name: "Canada", coords: [56.1304, -106.3468] },
-        { name: "Greenland", coords: [71.7069, -42.6043] },
-        { name: "Brazil", coords: [-14.235, -51.9253] },
-      ];
+  <script>
+    // ======== jvectormap activation
+    var markers = [{
+        name: "Egypt",
+        coords: [26.8206, 30.8025]
+      },
+      {
+        name: "Russia",
+        coords: [61.524, 105.3188]
+      },
+      {
+        name: "Canada",
+        coords: [56.1304, -106.3468]
+      },
+      {
+        name: "Greenland",
+        coords: [71.7069, -42.6043]
+      },
+      {
+        name: "Brazil",
+        coords: [-14.235, -51.9253]
+      },
+    ];
 
     // ====== calendar activation
     document.addEventListener("DOMContentLoaded", function() {
@@ -332,4 +348,4 @@
   </script>
 </body>
 
-</html>
+</html><?php /**PATH C:\wamp64\www\quanlidatphongks\resources\views/admin/layout/main.blade.php ENDPATH**/ ?>
