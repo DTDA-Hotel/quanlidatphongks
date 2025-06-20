@@ -26,7 +26,7 @@
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
-        <a href="index.html">
+        <a href="{{ route("admin.index") }}">
           <img src="{{ asset(url("")) }}/admin/images/logo/logo.svg" alt="logo" />
         </a>
       </div>
@@ -52,15 +52,21 @@
               <span class="text">Dashboard</span>
             </a>
             <ul id="ddmenu_1" class="collapse show dropdown-nav">
-              <li>
-                <a href="{{ route("admin.category") }}" > Danh mục </a>
+              <li >
+                <a id="cate" href="{{ route("admin.category") }}" > Danh mục </a>
                 <!-- class="active" -->
               </li>
-              <li>
-                <a href="{{ route("admin.roomlist") }}">Các phòng</a>
+              <li >
+                <a id="rooms" href="{{ route("admin.roomlist") }}">Các phòng</a>
               </li>
-              <li>
-                <a href="{{ route("admin.account") }}"> Tài khoản </a>
+              <li >
+                <a id="acc" href="{{ route("admin.account") }}"> Tài khoản </a>
+              </li>
+              <li >
+                <a id="imgst" href="{{ route("storage.image") }}"> Kho ảnh </a>
+              </li>
+              <li >
+                <a id="trash" href="{{ route("storage.trashedimg") }}"> Thùng rác </a>
               </li>
             </ul>
           </li>
@@ -310,6 +316,14 @@
 
     <script>
       // ======== jvectormap activation
+      let jso = @json(session("check"));
+      // console.log(jso);
+      const cur = document.getElementById("check");
+      if(cur){
+      if(jso.includes(cur.innerText)){
+        document.getElementById(cur.innerText).classList.add("active");
+      }
+    }
       var markers = [
         { name: "Egypt", coords: [26.8206, 30.8025] },
         { name: "Russia", coords: [61.524, 105.3188] },
@@ -320,6 +334,7 @@
 
     // ====== calendar activation
     document.addEventListener("DOMContentLoaded", function() {
+      
       var calendarMiniEl = document.getElementById("calendar-mini");
       var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
         initialView: "dayGridMonth",
@@ -329,6 +344,7 @@
       });
       calendarMini.render();
     });
+    // console.log(jso);
   </script>
 </body>
 
