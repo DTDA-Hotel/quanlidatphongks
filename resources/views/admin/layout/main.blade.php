@@ -60,7 +60,7 @@
                 <a href="{{ route("admin.roomlist") }}">Các phòng</a>
               </li>
               <li>
-                <a href="{{ route("admin.account") }}" class="active"> Tài khoản </a>
+                <a href="{{ route("admin.account") }}"> Tài khoản </a>
               </li>
             </ul>
           </li>
