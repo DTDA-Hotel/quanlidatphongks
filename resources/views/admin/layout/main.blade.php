@@ -25,7 +25,7 @@
     <!-- ======== sidebar-nav start =========== -->
     <aside class="sidebar-nav-wrapper">
       <div class="navbar-logo">
-        <a href="index.html">
+        <a href="http://127.0.0.1:8000/administrator/">
           <img src="{{ asset(url("")) }}/admin/images/logo/logo.svg" alt="logo" />
         </a>
       </div>
@@ -51,16 +51,17 @@
               <span class="text">Dashboard</span>
             </a>
             <ul id="ddmenu_1" class="collapse show dropdown-nav">
-              <li>
-                <a href="{{ route("admin.category") }}" > Danh mục </a>
+              <li class="d-flex justify-content-center">
+                <a class="" href="{{ route("admin.category") }}" id="cate"> Danh mục </a>
                 <!-- class="active" -->
               </li>
-              <li>
-                <a href="{{ route("admin.roomlist") }}">Các phòng</a>
+              <li class="d-flex justify-content-center">
+                <a href="{{ route("admin.roomlist") }}" id="rooms">Các phòng</a>
               </li>
-              <li>
-                <a href="{{ route("admin.account") }}" class="active"> Tài khoản </a>
-              </li>
+              <li class="d-flex justify-content-center"><a id="imgst" href="{{ route("storage.image") }}">Kho ảnh</a></li>
+              <li class="d-flex justify-content-center"><a id="trash" href="{{ route("storage.trashedimg") }}">Thùng rác</a></li>
+              <li class="d-flex justify-content-center"><a id="acc" href="{{ route("admin.account") }}">Tài khoản</a></li>
+                
             </ul>
           </li>
         </ul>
@@ -308,6 +309,12 @@
     <script src="{{ asset(url("")) }}/admin/js/main.js"></script>
 
     <script>
+            let dataList = @json(session("check"));
+      const curdata= document.getElementById("check").innerText;
+console.log(curdata);
+      if(dataList.includes(curdata)){
+        document.getElementById(curdata).classList.add("active")
+      }
       // ======== jvectormap activation
       var markers = [
         { name: "Egypt", coords: [26.8206, 30.8025] },

@@ -1,8 +1,13 @@
 @extends("admin.layout.main")
 
 @section("main")
-
-
+          <div class="tables-wrapper">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-style mb-30">
+                  <h6 class="mb-10">Danh sách tài khoản</h6>
+<p style="display: none;" id="check">acc</p>
+<div class="table-wrapper table-responsive">
 <table class="table">
   <thead>
     <tr>
@@ -37,7 +42,11 @@
      @endforeach
   </tbody>
 </table>
-
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
