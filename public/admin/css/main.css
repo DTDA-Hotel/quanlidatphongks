@@ -3722,7 +3722,8 @@ h6,
   transform: rotate(0deg);
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children ul {
-  padding: 10px 24px 40px 57px;
+  padding: 10px 10px 10px 10px;
+
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children ul li {
   margin-bottom: 12px;
@@ -3733,12 +3734,16 @@ h6,
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children ul li a {
   font-size: 14px;
   font-weight: 500;
-  padding: 0;
+  padding-left: 30%;
   display: flex;
   align-items: center;
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children ul li a.active, .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children ul li a:hover {
-  color: #1A2142;
+  background-color: #dedede;
+  color:black;
+  /* padding: 5%; */
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px 1px rgba(0, 0, 255, 0.2);;
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children ul li a i {
   font-size: 16px;

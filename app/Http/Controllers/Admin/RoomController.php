@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Category;
+use App\Models\khoanh;
 use App\Models\Room;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -55,27 +56,38 @@ class RoomController extends Controller
         $pos = $request->input("position");
         $filename = "" ;
         $desc = $request->input("desc","");
-        try {
+        // try {
         if($request->hasFile("pimage")){
             $img = $request->file("pimage");
             $filename=time().'_'.$img->getClientOriginalName();
             $img->storeAs("/upload",$filename);
+            
+            
         }
         
             Room::create(["name"=>$name,"category_id"=>$cate,"pimage"=>$filename,"description"=>$desc,"amenities"=>$amenities,"position"=>$pos]);
+            $idnewroom = Room::where("name",$name)->get();
+            // dd($idnewroom);
+            khoanh::create(["imgname"=>$filename,"roomid"=>$idnewroom[0]->id]);
             return redirect(route("admin.roomlist"));
-        } catch (\Throwable $th) {
-            throw $th;
-        }
+        // } catch (\Throwable $th) {
+        //     throw $th;
+        // }
         
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Room $room)
+    public function show($id)
     {
-        //
+        $roominf = Room::findOrFail($id);
+           $cats= Category::find($roominf['category_id']);
+           $roominf["category_name"] = $cats["name"];
+            // dd($t);
+        
+        $imglist = khoanh::where("roomid",$roominf->id)->get();
+        return view("admin.Room.info",compact("roominf","imglist","id"));
     }
 
     /**
@@ -87,7 +99,26 @@ class RoomController extends Controller
         $cat = Category::get();
         return view("admin.Room.edit",compact("roomdata","cat"));
     }
+    public function toStorePic($id){
+        return view("admin.Room.store",compact("id"));
+    }
 
+    public function StorePic($id,Request $request){
+        if($request->hasFile("images")){
+            foreach($request->file("images") as $file){
+                $filename = time().'_'.uniqid().'_'.$file->getClientOriginalName();
+                $file->storeAs("/upload",$filename);
+                khoanh::create([
+                    'imgname'=>$filename,
+                    'roomid'=>$id
+                ]);
+            }
+        }else{
+            return back()->withErrors(["err"=>"lỗi tải file lên"]);
+        }
+        // khoanh::create([]);
+        return redirect(route("admin.showroom",["id"=>$id]));
+    }
     /**
      * Update the specified resource in storage.
      */

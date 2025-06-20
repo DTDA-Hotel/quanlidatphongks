@@ -20,7 +20,7 @@
 			<h1>Sign Up</h1>
                 <input type="text" name="name" class="Name" placeholder="Name">
 				<input type="text" name="email" class="Email" placeholder="Email">
-				<input type="text" name="password" class="Address" placeholder="password">
+				<input type="password" name="password" class="Address" placeholder="password">
                 <button type="submit" value="Add" name="submit">Submit</button>
             </form>
         </div>

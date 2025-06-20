@@ -45,30 +45,30 @@
             <i class="icon_search"></i>
         </div>
         <div class="header-configure-area">
-            @if ( session("locale") =="vi")
-                                <div class="language-option">
-                                <img src="img/vnflag.png" alt="">
-                                <span>VI<i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="/lang/vi">Vi</a></li>
-                                        <li><a href="/lang/en">En</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            @elseif ( session("locale") =="en")
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN<i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="/lang/vi">Vi</a></li>
-                                        <li><a href="/lang/en">En</a></li>
-                                    </ul>
-                                </div>
-                              
-                            </div>
-                            @endif
+            @if (session("locale") == "vi")
+                <div class="language-option">
+                    <img src="img/vnflag.png" alt="">
+                    <span>VI<i class="fa fa-angle-down"></i></span>
+                    <div class="flag-dropdown">
+                        <ul>
+                            <li><a href="/lang/vi">Vi</a></li>
+                            <li><a href="/lang/en">En</a></li>
+                        </ul>
+                    </div>
+                </div>
+            @elseif (session("locale") == "en")
+                <div class="language-option">
+                    <img src="img/flag.jpg" alt="">
+                    <span>EN<i class="fa fa-angle-down"></i></span>
+                    <div class="flag-dropdown">
+                        <ul>
+                            <li><a href="/lang/vi">Vi</a></li>
+                            <li><a href="/lang/en">En</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            @endif
             <a href="#" class="bk-btn">Book Now!</a>
         </div>
         <nav class="mainmenu mobile-menu">
@@ -101,7 +101,7 @@
         </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
-{{-- {{ App::getLocale() }} --}}
+    {{-- {{ App::getLocale() }} --}}
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="top-nav">
@@ -122,32 +122,33 @@
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
                             <a href="#" class="bk-btn">Booking Now</a>
-                            @if ( session("locale") =="vi" || session("locale")==null ||session("locale")=="")
+                            @if (session("locale") == "vi" || session("locale") == null || session("locale") == "")
                                 <div class="language-option">
-                                <img src="img/vnflag.png" alt="">
-                                <span>VI<i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="/lang/vi">Vi</a></li>
-                                        <li><a href="/lang/en">En</a></li>
-                                    </ul>
+                                    <img src="img/vnflag.png" alt="">
+                                    <span>VI<i class="fa fa-angle-down"></i></span>
+                                    <div class="flag-dropdown">
+                                        <ul>
+                                            <li><a href="/lang/vi">Vi</a></li>
+                                            <li><a href="/lang/en">En</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            @elseif ( session("locale") =="en")
-                            <div class="language-option">
-                                <img src="img/flag.jpg" alt="">
-                                <span>EN<i class="fa fa-angle-down"></i></span>
-                                <div class="flag-dropdown">
-                                    <ul>
-                                        <li><a href="/lang/vi">Vi</a></li>
-                                        <li><a href="/lang/en">En</a></li>
-                                    </ul>
+                            @elseif (session("locale") == "en")
+                                <div class="language-option">
+                                    <img src="img/flag.jpg" alt="">
+                                    <span>EN<i class="fa fa-angle-down"></i></span>
+                                    <div class="flag-dropdown">
+                                        <ul>
+                                            <li><a href="/lang/vi">Vi</a></li>
+                                            <li><a href="/lang/en">En</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
                             @endif
-                            <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign Out </a>
+                            <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign
+                                Out </a>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -172,11 +173,11 @@
                                     <li><a href="./about-us.html">{{ __("messages.AboutUs") }}</a></li>
                                     <li><a href="./pages.html">{{ __("messages.Pages") }}</a>
                                         <ul class="dropdown">
-                        <!-- <li><a href="#">Room Details</a></li> -->
-                        <li><a href="#">Phòng Thượng Hạng</a></li>
-                        <li><a href="#">Phòng gia đình</a></li>
-                        <li><a href="#">Phòng Tổng Thống</a></li>
-                    </ul>
+                                            <!-- <li><a href="#">Room Details</a></li> -->
+                                            <li><a href="#">Phòng Thượng Hạng</a></li>
+                                            <li><a href="#">Phòng gia đình</a></li>
+                                            <li><a href="#">Phòng Tổng Thống</a></li>
+                                        </ul>
                                     </li>
                                     <li><a href="./blog.html">{{ __("messages.News") }}</a></li>
                                     <li><a href="./contact.html">{{ __("messages.Contact") }}</a></li>
@@ -195,13 +196,13 @@
 
 
 
-@yield("main")
+    @yield("main")
 
 
 
 
 
- <!-- Footer Section Begin -->
+    <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -258,9 +259,15 @@
                         </ul>
                     </div>
                     <div class="col-lg-5">
-                        <div class="co-text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                        <div class="co-text">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                                template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

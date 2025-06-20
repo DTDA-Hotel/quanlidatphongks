@@ -23,54 +23,58 @@
   </div>
   <!-- ======== Preloader =========== -->
 
-  <!-- ======== sidebar-nav start =========== -->
-  <aside class="sidebar-nav-wrapper">
-    <div class="navbar-logo">
-      <a href="index.html">
-        <img src="{{ asset(url("")) }}/admin/images/logo/logo.svg" alt="logo" />
-      </a>
-    </div>
-    <nav class="sidebar-nav">
-      <ul>
-        <li class="nav-item nav-item-has-children">
-          <a
-            href="#0"
-            data-bs-toggle="collapse"
-            data-bs-target="#ddmenu_1"
-            aria-controls="ddmenu_1"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="icon">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M8.74999 18.3333C12.2376 18.3333 15.1364 15.8128 15.7244 12.4941C15.8448 11.8143 15.2737 11.25 14.5833 11.25H9.99999C9.30966 11.25 8.74999 10.6903 8.74999 10V5.41666C8.74999 4.7263 8.18563 4.15512 7.50586 4.27556C4.18711 4.86357 1.66666 7.76243 1.66666 11.25C1.66666 15.162 4.83797 18.3333 8.74999 18.3333Z" />
-                <path
-                  d="M17.0833 10C17.7737 10 18.3432 9.43708 18.2408 8.75433C17.7005 5.14918 14.8508 2.29947 11.2457 1.75912C10.5629 1.6568 10 2.2263 10 2.91665V9.16666C10 9.62691 10.3731 10 10.8333 10H17.0833Z" />
-              </svg>
-            </span>
-            <span class="text">Dashboard</span>
-          </a>
-          <ul id="ddmenu_1" class="collapse show dropdown-nav">
-            <li>
-              <a href="{{ route("admin.category") }}"> Danh mục </a>
-              <!-- class="active" -->
-            </li>
-            <li>
-              <a href="{{ route("admin.roomlist") }}">Các phòng</a>
-            </li>
-            <li>
-              <a href="{{ route("admin.account") }}" class="active"> Tài khoản </a>
-            </li>
-            <li>
-              <a href="{{ route("admin.bills.index") }}">Hóa đơn</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </aside>
-  <div class="overlay"></div>
-  <!-- ======== sidebar-nav end =========== -->
+    <!-- ======== sidebar-nav start =========== -->
+    <aside class="sidebar-nav-wrapper">
+      <div class="navbar-logo">
+        <a href="{{ route("admin.index") }}">
+          <img src="{{ asset(url("")) }}/admin/images/logo/logo.svg" alt="logo" />
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item nav-item-has-children">
+            <a
+              href="#0"
+              data-bs-toggle="collapse"
+              data-bs-target="#ddmenu_1"
+              aria-controls="ddmenu_1"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8.74999 18.3333C12.2376 18.3333 15.1364 15.8128 15.7244 12.4941C15.8448 11.8143 15.2737 11.25 14.5833 11.25H9.99999C9.30966 11.25 8.74999 10.6903 8.74999 10V5.41666C8.74999 4.7263 8.18563 4.15512 7.50586 4.27556C4.18711 4.86357 1.66666 7.76243 1.66666 11.25C1.66666 15.162 4.83797 18.3333 8.74999 18.3333Z" />
+                  <path
+                    d="M17.0833 10C17.7737 10 18.3432 9.43708 18.2408 8.75433C17.7005 5.14918 14.8508 2.29947 11.2457 1.75912C10.5629 1.6568 10 2.2263 10 2.91665V9.16666C10 9.62691 10.3731 10 10.8333 10H17.0833Z" />
+                </svg>
+              </span>
+              <span class="text">Dashboard</span>
+            </a>
+            <ul id="ddmenu_1" class="collapse show dropdown-nav">
+              <li >
+                <a id="cate" href="{{ route("admin.category") }}" > Danh mục </a>
+                <!-- class="active" -->
+              </li>
+              <li >
+                <a id="rooms" href="{{ route("admin.roomlist") }}">Các phòng</a>
+              </li>
+              <li >
+                <a id="acc" href="{{ route("admin.account") }}"> Tài khoản </a>
+              </li>
+              <li >
+                <a id="imgst" href="{{ route("storage.image") }}"> Kho ảnh </a>
+              </li>
+              <li >
+                <a id="trash" href="{{ route("storage.trashedimg") }}"> Thùng rác </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="overlay"></div>
+    <!-- ======== sidebar-nav end =========== -->
 
   <!-- ======== main-wrapper start =========== -->
   <main class="main-wrapper">
@@ -310,32 +314,27 @@
   <script src="{{ asset(url("")) }}/admin/js/polyfill.js"></script>
   <script src="{{ asset(url("")) }}/admin/js/main.js"></script>
 
-  <script>
-    // ======== jvectormap activation
-    var markers = [{
-        name: "Egypt",
-        coords: [26.8206, 30.8025]
-      },
-      {
-        name: "Russia",
-        coords: [61.524, 105.3188]
-      },
-      {
-        name: "Canada",
-        coords: [56.1304, -106.3468]
-      },
-      {
-        name: "Greenland",
-        coords: [71.7069, -42.6043]
-      },
-      {
-        name: "Brazil",
-        coords: [-14.235, -51.9253]
-      },
-    ];
+    <script>
+      // ======== jvectormap activation
+      let jso = @json(session("check"));
+      // console.log(jso);
+      const cur = document.getElementById("check");
+      if(cur){
+      if(jso.includes(cur.innerText)){
+        document.getElementById(cur.innerText).classList.add("active");
+      }
+    }
+      var markers = [
+        { name: "Egypt", coords: [26.8206, 30.8025] },
+        { name: "Russia", coords: [61.524, 105.3188] },
+        { name: "Canada", coords: [56.1304, -106.3468] },
+        { name: "Greenland", coords: [71.7069, -42.6043] },
+        { name: "Brazil", coords: [-14.235, -51.9253] },
+      ];
 
     // ====== calendar activation
     document.addEventListener("DOMContentLoaded", function() {
+      
       var calendarMiniEl = document.getElementById("calendar-mini");
       var calendarMini = new FullCalendar.Calendar(calendarMiniEl, {
         initialView: "dayGridMonth",
@@ -345,6 +344,7 @@
       });
       calendarMini.render();
     });
+    // console.log(jso);
   </script>
 </body>
 

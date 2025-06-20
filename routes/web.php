@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageStorageController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -30,17 +31,32 @@ Route::prefix("/administrator")->group(function () {
         Route::post("/add", [CategoryController::class, "store"])->name("admin.addcat");
         Route::post("/update/{id}", [CategoryController::class, "update"])->name("admin.updcat");
     });
-    Route::prefix("/room")->group(function () {
-        Route::get("/list", [RoomController::class, "index"])->name("admin.roomlist");
-        Route::get("/add", [RoomController::class, "create"])->name("admin.addroom");
-        Route::get("/edit/{id}", [RoomController::class, "edit"])->name("admin.editroom");
-        Route::get("/del/{id}", [RoomController::class, "destroy"])->name("admin.delroom");
-        Route::put("/update/{id}", [RoomController::class, "update"])->name("admin.updroom");
-        Route::post("/store", [RoomController::class, "store"])->name("admin.storeroom");
+    Route::prefix("/account")->group(function(){
+        Route::get("/",[UserController::class,"index"])->name("admin.account");
+        Route::get("/edit/{id}",[UserController::class,"edit"])->name("admin.edituser");
+        Route::post("/update/{id}",[UserController::class,"update"])->name("admin.updateuser");
+        Route::get("/delete/{id}",[UserController::class,"destroy"])->name("admin.deleteuser");
     });
-    Route::prefix("/storage")->group(function () {
-        Route::prefix("/image")->group(function () {
-            Route::get("/", [ImageStorageController::class, "index"])->name("storage.image");
+    Route::prefix("/room")->group(function(){
+        Route::get("/list",[RoomController::class,"index"])->name("admin.roomlist");
+        Route::get("/info/{id}",[RoomController::class,"show"])->name("admin.showroom");
+        Route::get("/add",[RoomController::class,"create"])->name("admin.addroom");
+        Route::get("/addpic/{id}",[RoomController::class,"toStorePic"])->name("admin.tostorepic");
+        Route::post("/storepic/{id}",[RoomController::class,"StorePic"])->name("admin.storepic");
+        Route::get("/edit/{id}",[RoomController::class,"edit"])->name("admin.editroom");
+        Route::get("/del/{id}",[RoomController::class,"destroy"])->name("admin.delroom");
+        Route::put("/update/{id}",[RoomController::class,"update"])->name("admin.updroom");
+        Route::post("/store",[RoomController::class,"store"])->name("admin.storeroom");
+        Route::get("/review/{id}",[ReviewController::class,"listReview"])->name("admin.reviews");
+    });
+    Route::prefix("/storage")->group(function(){
+        Route::prefix("/image")->group(function(){
+            Route::get("/",[ImageStorageController::class,"index"])->name("storage.image");
+            Route::delete("/sdelimg/{id}",[ImageStorageController::class,"destroy"])->name("storage.sdelimg");
+            Route::get("/trashed",[ImageStorageController::class,"trash"])->name("storage.trashedimg");
+            Route::post("/restore/{id}",[ImageStorageController::class,"restore"])->name("storage.restimg");
+            Route::delete("/fdelimg/{id}",[ImageStorageController::class,"fdel"])->name("storage.fdelimg");
+            // Route::delete("");
         });
     });
     Route::prefix("/account")->group(function () {

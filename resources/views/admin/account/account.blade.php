@@ -4,6 +4,7 @@
 <h4 class="text-center mb-4">Danh sách người dùng</h4>
 
 <div class="table-responsive rounded shadow-sm p-3">
+   <p style="display: none;" id="check">acc</p>
   <table class="table table-bordered table-hover text-center align-middle bg-white">
     <thead style="background-color: #00bcd4; color: white;">
       <tr>
