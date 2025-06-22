@@ -1,8 +1,6 @@
 @extends("admin.layout.main")
 
 @section("main")
-
-
 <table class="table">
   <div class="tables-wrapper">
             <div class="row">
@@ -70,9 +68,4 @@
             </div>
           </div>
 </div>
-
-
-
-
-
 @endsection

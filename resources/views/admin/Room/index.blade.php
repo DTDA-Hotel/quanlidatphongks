@@ -8,11 +8,7 @@
               <div class="col-lg-12">
                 <div class="card-style mb-30">
                   <h6 class="mb-10">Danh sách phòng</h6>
-                  {{-- <p class="text-sm mb-20">
-                    For basic styling—light padding and only horizontal
-                    dividers—use the class table.
-                  </p> --}}
-                  {{-- {{ $roomlist }} --}}
+                   <p style="display: none;" id="check">rooms</p>
                   <div class="table-wrapper table-responsive">
                     <table class="table">
                       <thead>
