@@ -11,7 +11,7 @@
       <label class="form-label" for="">Password</label>
     <input class="form-control" type="text" name="password" id="password" value="<?php echo e($user->password); ?>">
       <label class="form-label" for="role">Role</label>
-    <input class="form-control" type="number" name="role" id="role" value="<?php echo e($user->role); ?>">
+    <input class="form-control" type="text" name="role" id="role" value="<?php echo e($user->role); ?>">
 
     <button type="submit" class="btn btn-primary">Cập nhật</button>
   

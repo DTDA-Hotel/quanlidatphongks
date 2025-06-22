@@ -4,24 +4,53 @@
 
 
 <table class="table">
+  <div class="tables-wrapper">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-style mb-30">
+                  <h6 class="mb-10">Danh sách tài khoản</h6>
+                  <div class="table-wrapper table-responsive">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Role</th>
-      <th scope="col">email_verified_at	</th>
-      <th scope="col">Password</th>
-      <th scope="col">Remember_token</th>
-      <th scope="col">Created_at</th>
-      <th scope="col">Created_at</th>
-      <th scope="col">Action</th>
+      <th>
+        <h6>ID</h6>
+      </th>
+      <th>
+        <h6>Name</h6>
+      </th>
+      <th>
+        <h6>Email</h6>
+      </th>
+      <th>
+        <h6>Role</h6>
+      </th>
+      <th>
+        <h6>email_verified_at</h6>
+      </th>
+      <th>
+        <h6>Password</h6>
+      </th>
+      <th>
+        <h6>Remember_token</h6>
+      </th>
+      <th>
+        <h6>Created_at</h6>
+      </th>
+      <th>
+        <h6>Created_at</h6>
+      </th>
+      <th>
+        <h6>Action</h6>
+      </th>
     </tr>
   </thead>
   <tbody>
     <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <tr>
-      <th scope="row"><?php echo e($value->id); ?></th>
+      <th scope="row"><h6><?php echo e($value->id); ?>
+
+
+      </th>
       <td><?php echo e($value->name); ?></td>
       <td><?php echo e($value->email); ?></td>
       <td><?php echo e($value->role); ?></td>
@@ -37,6 +66,11 @@
      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </tbody>
 </table>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
 
 
 

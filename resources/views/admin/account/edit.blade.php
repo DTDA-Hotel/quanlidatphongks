@@ -11,7 +11,7 @@
       <label class="form-label" for="">Password</label>
     <input class="form-control" type="text" name="password" id="password" value="{{ $user->password }}">
       <label class="form-label" for="role">Role</label>
-    <input class="form-control" type="number" name="role" id="role" value="{{ $user->role }}">
+    <input class="form-control" type="text" name="role" id="role" value="{{ $user->role }}">
 
     <button type="submit" class="btn btn-primary">Cập nhật</button>
   

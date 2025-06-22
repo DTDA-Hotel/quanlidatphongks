@@ -73,19 +73,19 @@
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html"> <?php echo e(__("messages.Home")); ?> </a></li>
-                <li><a href="./rooms.html"><?php echo e(__("messages.Rooms")); ?></a></li>
-                <li><a href="./about-us.html"><?php echo e(__("messages.AboutUs")); ?></a></li>
-                <li><a href="./pages.html"><?php echo e(__("messages.Pages")); ?></a>
+                <li class="active"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
+                <li><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
+                <li><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                <li><a href="#"><?php echo e(__("messages.Pages")); ?></a>
                     <ul class="dropdown">
-                        <li><a href="./room-details.html">Room Details</a></li>
-                        <li><a href="#">Deluxe Room</a></li>
-                        <li><a href="#">Family Room</a></li>
-                        <li><a href="#">Premium Room</a></li>
+                        <!-- <li><a href="#">Room Details</a></li> -->
+                        <li><a href="#">Phòng Thượng Hạng</a></li>
+                        <li><a href="#">Phòng gia đình</a></li>
+                        <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html"> <?php echo e(__("messages.News")); ?> </a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
+                <li><a href="">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -96,8 +96,8 @@
             <a href="#"><i class="fa fa-instagram"></i></a>
         </div>
         <ul class="top-widget">
-            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+            <li><i class="fa fa-phone"></i> 0865091023</li>
+            <li><i class="fa fa-envelope"></i> tamuon00@gmail.com</li>
         </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
@@ -109,8 +109,8 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="tn-left">
-                            <li><i class="fa fa-phone"></i> (12) 345 67890</li>
-                            <li><i class="fa fa-envelope"></i> info.colorlib@gmail.com</li>
+                            <li><i class="fa fa-phone"></i> 0865091023</li>
+                            <li><i class="fa fa-envelope"></i> tamuon00@gmail.com</li>
                         </ul>
                     </div>
                     <div class="col-lg-6">
@@ -172,11 +172,11 @@
                                     <li><a href="./about-us.html"><?php echo e(__("messages.AboutUs")); ?></a></li>
                                     <li><a href="./pages.html"><?php echo e(__("messages.Pages")); ?></a>
                                         <ul class="dropdown">
-                                            <li><a href="./room-details.html">Room Details</a></li>
-                                            <li><a href="./blog-details.html">Blog Details</a></li>
-                                            <li><a href="#">Family Room</a></li>
-                                            <li><a href="#">Premium Room</a></li>
-                                        </ul>
+                        <!-- <li><a href="#">Room Details</a></li> -->
+                        <li><a href="#">Phòng Thượng Hạng</a></li>
+                        <li><a href="#">Phòng gia đình</a></li>
+                        <li><a href="#">Phòng Tổng Thống</a></li>
+                    </ul>
                                     </li>
                                     <li><a href="./blog.html"><?php echo e(__("messages.News")); ?></a></li>
                                     <li><a href="./contact.html"><?php echo e(__("messages.Contact")); ?></a></li>

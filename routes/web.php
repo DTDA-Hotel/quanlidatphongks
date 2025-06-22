@@ -15,7 +15,7 @@ Route::get('lang/{locale}', function ($locale) {
     }
     return redirect(route("client.index"));
 });
-Route::middleware( 'auth')->prefix("/")->group(function(){
+Route::prefix("/")->group(function(){
     Route::get('/', [CustomerController::class,"index"])->name("client.index");
 });
 
@@ -42,6 +42,15 @@ Route::prefix("/administrator")->group(function(){
             Route::get("/",[ImageStorageController::class,"index"])->name("storage.image");
         });
     });
+    Route::prefix("/account")->group(function(){
+        Route::get("/",[UserController::class,"index"])->name("admin.account");
+        Route::get("/add",[UserController::class,"create"])->name("admin.adduser");
+        Route::get("/edit/{id}",[UserController::class,"edit"])->name("admin.edituser");
+        Route::get("/delete/{id}",[UserController::class,"destroy"])->name("admin.deleteuser");
+        Route::put("/update/{id}",[UserController::class,"update"])->name("admin.updateuser");
+        Route::post("/store",[UserController::class,"store"])->name("admin.storeuser");
+    });
+    
     // Route::get("/tup",[RoomController::class,"totest"])->name("totest");
     // Route::post("/testupload",[RoomController::class,"uptest"])->name("testing");
 });
