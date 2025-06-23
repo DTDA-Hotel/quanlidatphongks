@@ -8,4 +8,5 @@ return [
 'News'=>"Tin tức",
 'Contact'=>"Liên hệ",
 'booking'=>"Đặt Phòng",
+'Booking Now'=>"Đặt ngay",
 ];

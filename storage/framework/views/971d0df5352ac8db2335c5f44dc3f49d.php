@@ -1,10 +1,10 @@
-@extends("layout.main")
-@section("main")
-@if(session('error'))
+<?php $__env->startSection("main"); ?>
+<?php if(session('error')): ?>
 <div class="alert alert-success">
-    {{ session('error') }}
+    <?php echo e(session('error')); ?>
+
 </div>
-@endif
+<?php endif; ?>
 
 <!-- Hero Section Begin -->
 <section class="hero-section">
@@ -408,4 +408,5 @@
 </section>
 <!-- Blog Section End -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layout.main", array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Admin\Desktop\DATN\quanlidatphongks\resources\views/client/index.blade.php ENDPATH**/ ?>
