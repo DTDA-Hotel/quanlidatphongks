@@ -27,6 +27,7 @@
 </head>
 
 <body>
+    {{-- {{ dd(session("active")) }} --}}
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -73,10 +74,10 @@
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="#"> {{ __("messages.Home") }} </a></li>
-                <li><a href="#">{{ __("messages.Rooms") }}</a></li>
-                <li><a href="#">{{ __("messages.AboutUs") }}</a></li>
-                <li><a href="#">{{ __("messages.Pages") }}</a>
+                <li id="home"><a href="#"> {{ __("messages.Home") }} </a></li>
+                <li id="room"><a href="#">{{ __("messages.Rooms") }}</a></li>
+                <li id="about"><a href="#">{{ __("messages.AboutUs") }}</a></li>
+                <li id="other"><a href="#">{{ __("messages.Pages") }}</a>
                     <ul class="dropdown">
                         <!-- <li><a href="#">Room Details</a></li> -->
                         <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -84,8 +85,8 @@
                         <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                 </li>
-                <li><a href=""> {{ __("messages.News") }} </a></li>
-                <li><a href="">Contact</a></li>
+                <li id="news"><a href=""> {{ __("messages.News") }} </a></li>
+                <li id="contact"><a href="">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -159,28 +160,29 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="{{ route("client.index") }}">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
+                    
                     <div class="col-lg-10">
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index.html">{{ __("messages.Home") }}</a></li>
-                                    <li><a href="./rooms.html"> {{ __("messages.Rooms") }} </a></li>
-                                    <li><a href="./about-us.html">{{ __("messages.AboutUs") }}</a></li>
-                                    <li><a href="./pages.html">{{ __("messages.Pages") }}</a>
-                                        <ul class="dropdown">
+                                    <li class="linkcheck" id="home"><a href="{{ route("client.index") }}">{{ __("messages.Home") }}</a></li>
+                                    <li class="linkcheck" id="room"><a href="#"> {{ __("messages.Rooms") }} </a>
+                                    <ul class="dropdown">
                                             <!-- <li><a href="#">Room Details</a></li> -->
                                             <li><a href="#">Phòng Thượng Hạng</a></li>
                                             <li><a href="#">Phòng gia đình</a></li>
                                             <li><a href="#">Phòng Tổng Thống</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html">{{ __("messages.News") }}</a></li>
-                                    <li><a href="./contact.html">{{ __("messages.Contact") }}</a></li>
+                                    <li class="linkcheck" id="about"><a href="{{ route("client.about") }}">{{ __("messages.AboutUs") }}</a></li>
+                                    <li class="linkcheck" id="other"><a href="./pages.html">{{ __("messages.Pages") }}</a></li>
+                                    <li class="linkcheck" id="news"><a href="./blog.html">{{ __("messages.News") }}</a></li>
+                                    <li class="linkcheck" id="contact"><a href="{{ route("client.contact") }}">{{ __("messages.Contact") }}</a></li>
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
@@ -287,6 +289,17 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const checkactive = @json(session("active"));
+        const current = document.getElementById("current");
+        if (current) {
+            if(checkactive.includes(current.innerText)){
+                document.getElementById(current.innerText).classList.add("active");
+            }
+        }
+    });
+    </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -295,6 +308,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html>

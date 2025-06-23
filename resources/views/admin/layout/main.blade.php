@@ -68,6 +68,9 @@
               <li >
                 <a id="trash" href="{{ route("storage.trashedimg") }}"> Thùng rác </a>
               </li>
+              <li>
+                <a id="contact" href="{{ route("admin.contact") }}">Liên hệ</a>
+              </li>
             </ul>
           </li>
         </ul>
