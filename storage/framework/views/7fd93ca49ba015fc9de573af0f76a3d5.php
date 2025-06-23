@@ -106,6 +106,7 @@
 
                           </td>
                           <td class="border border-start border-end border-black">
+                            <a href="<?php echo e(route("admin.showroom",["id"=>$k->id])); ?>" class="btn btn-success">Chi tiết</a>
                             <a class="btn btn-warning" href="<?php echo e(route("admin.editroom",["id"=>$k->id])); ?>">Sửa</a><br>
                             <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger" href="<?php echo e(route("admin.delroom",["id"=>$k->id])); ?>">Xoá</a>
                           </td>

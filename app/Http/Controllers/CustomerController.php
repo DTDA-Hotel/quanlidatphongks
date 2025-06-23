@@ -9,11 +9,19 @@ use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
+    public function about(){
+        return view("client.about");
+    }
+    public function contact(){
+        return view("client.contact");
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $checkactive = ["home","about","contact","news","other","rooms"];
+        session::put(["active"=>$checkactive]);
         session::put(["locale"=>"vi"]);
         return view("client.index");
     }

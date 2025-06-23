@@ -27,6 +27,7 @@
 </head>
 
 <body>
+    
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -73,10 +74,10 @@
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="active"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
-                <li><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
-                <li><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
-                <li><a href="#"><?php echo e(__("messages.Pages")); ?></a>
+                <li id="home"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
+                <li id="room"><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
+                <li id="about"><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                <li id="other"><a href="#"><?php echo e(__("messages.Pages")); ?></a>
                     <ul class="dropdown">
                         <!-- <li><a href="#">Room Details</a></li> -->
                         <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -84,8 +85,8 @@
                         <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                 </li>
-                <li><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
-                <li><a href="">Contact</a></li>
+                <li id="news"><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
+                <li id="contact"><a href="">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -159,28 +160,29 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="<?php echo e(route("client.index")); ?>">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
+                    
                     <div class="col-lg-10">
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index.html"><?php echo e(__("messages.Home")); ?></a></li>
-                                    <li><a href="./rooms.html"> <?php echo e(__("messages.Rooms")); ?> </a></li>
-                                    <li><a href="./about-us.html"><?php echo e(__("messages.AboutUs")); ?></a></li>
-                                    <li><a href="./pages.html"><?php echo e(__("messages.Pages")); ?></a>
-                                        <ul class="dropdown">
+                                    <li class="linkcheck" id="home"><a href="<?php echo e(route("client.index")); ?>"><?php echo e(__("messages.Home")); ?></a></li>
+                                    <li class="linkcheck" id="room"><a href="#"> <?php echo e(__("messages.Rooms")); ?> </a>
+                                    <ul class="dropdown">
                                             <!-- <li><a href="#">Room Details</a></li> -->
                                             <li><a href="#">Phòng Thượng Hạng</a></li>
                                             <li><a href="#">Phòng gia đình</a></li>
                                             <li><a href="#">Phòng Tổng Thống</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="./blog.html"><?php echo e(__("messages.News")); ?></a></li>
-                                    <li><a href="./contact.html"><?php echo e(__("messages.Contact")); ?></a></li>
+                                    <li class="linkcheck" id="about"><a href="<?php echo e(route("client.about")); ?>"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                                    <li class="linkcheck" id="other"><a href="./pages.html"><?php echo e(__("messages.Pages")); ?></a></li>
+                                    <li class="linkcheck" id="news"><a href="./blog.html"><?php echo e(__("messages.News")); ?></a></li>
+                                    <li class="linkcheck" id="contact"><a href="<?php echo e(route("client.contact")); ?>"><?php echo e(__("messages.Contact")); ?></a></li>
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
@@ -287,6 +289,17 @@
     <!-- Search model end -->
 
     <!-- Js Plugins -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const checkactive = <?php echo json_encode(session("active"), 15, 512) ?>;
+        const current = document.getElementById("current");
+        if (current) {
+            if(checkactive.includes(current.innerText)){
+                document.getElementById(current.innerText).classList.add("active");
+            }
+        }
+    });
+    </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -295,6 +308,7 @@
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html><?php /**PATH C:\Users\Admin\Videos\Captures\quanlidatphongks\resources\views/layout/main.blade.php ENDPATH**/ ?>

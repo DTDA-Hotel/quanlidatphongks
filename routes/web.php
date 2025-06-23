@@ -9,21 +9,31 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('lang/{locale}', function ($locale) {
     if (in_array($locale, ['vi', 'en'])) {
         session(['locale' => $locale]);
     }
-    return redirect(route("client.index"));
+    return redirect()->back();
 });
 //middleware('auth')->
 Route::prefix("/")->group(function () {
     Route::get('/', [CustomerController::class, "index"])->name("client.index");
+    Route::get("/about", [CustomerController::class, "about"])->name("client.about");
+    Route::get("/contact", [CustomerController::class, "contact"])->name("client.contact");
+    Route::post("/sendcontact", [ContactController::class, "store"])->name("client.postcontact");
+    
 });
 
 Route::prefix("/administrator")->group(function () {
     Route::get("/", [AdminController::class, "index"])->name("admin.index");
+    Route::prefix("contact")->group(function () {
+        Route::get("/", [ContactController::class, "index"])->name("admin.contact");
+        // Route::get("/delete/{id}", [AdminController::class, "destroy"])->name("admin.delcontact");
+        // Route::get("/view/{id}", [AdminController::class, "view"])->name("admin.viewcontact");
+    });
     Route::prefix("/category")->group(function () {
         Route::get("/", [CategoryController::class, "index"])->name("admin.category");
         Route::get("/create", [CategoryController::class, "create"])->name("admin.createcat");
