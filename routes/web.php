@@ -17,9 +17,9 @@ Route::get('lang/{locale}', function ($locale) {
     }
     return redirect(route("client.index"));
 });
-Route::middleware('auth')->prefix("/")->group(function () {
+// Route::middleware('auth')->prefix("/")->group(function () {
     Route::get('/', [CustomerController::class, "index"])->name("client.index");
-});
+// });
 
 Route::prefix("/administrator")->group(function () {
     Route::get("/", [AdminController::class, "index"])->name("admin.index");

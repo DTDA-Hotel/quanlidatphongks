@@ -46,28 +46,28 @@
         </div>
         <div class="header-configure-area">
             @if (session("locale") == "vi")
-                <div class="language-option">
-                    <img src="img/vnflag.png" alt="">
-                    <span>VI<i class="fa fa-angle-down"></i></span>
-                    <div class="flag-dropdown">
-                        <ul>
-                            <li><a href="/lang/vi">Vi</a></li>
-                            <li><a href="/lang/en">En</a></li>
-                        </ul>
-                    </div>
+            <div class="language-option">
+                <img src="img/vnflag.png" alt="">
+                <span>VI<i class="fa fa-angle-down"></i></span>
+                <div class="flag-dropdown">
+                    <ul>
+                        <li><a href="/lang/vi">Vi</a></li>
+                        <li><a href="/lang/en">En</a></li>
+                    </ul>
                 </div>
+            </div>
             @elseif (session("locale") == "en")
-                <div class="language-option">
-                    <img src="img/flag.jpg" alt="">
-                    <span>EN<i class="fa fa-angle-down"></i></span>
-                    <div class="flag-dropdown">
-                        <ul>
-                            <li><a href="/lang/vi">Vi</a></li>
-                            <li><a href="/lang/en">En</a></li>
-                        </ul>
-                    </div>
-
+            <div class="language-option">
+                <img src="img/flag.jpg" alt="">
+                <span>EN<i class="fa fa-angle-down"></i></span>
+                <div class="flag-dropdown">
+                    <ul>
+                        <li><a href="/lang/vi">Vi</a></li>
+                        <li><a href="/lang/en">En</a></li>
+                    </ul>
                 </div>
+
+            </div>
             @endif
             <a href="#" class="bk-btn">Book Now!</a>
         </div>
@@ -123,31 +123,35 @@
                             </div>
                             <a href="#" class="bk-btn">Booking Now</a>
                             @if (session("locale") == "vi" || session("locale") == null || session("locale") == "")
-                                <div class="language-option">
-                                    <img src="img/vnflag.png" alt="">
-                                    <span>VI<i class="fa fa-angle-down"></i></span>
-                                    <div class="flag-dropdown">
-                                        <ul>
-                                            <li><a href="/lang/vi">Vi</a></li>
-                                            <li><a href="/lang/en">En</a></li>
-                                        </ul>
-                                    </div>
+                            <div class="language-option">
+                                <img src="img/vnflag.png" alt="">
+                                <span>VI<i class="fa fa-angle-down"></i></span>
+                                <div class="flag-dropdown">
+                                    <ul>
+                                        <li><a href="/lang/vi">Vi</a></li>
+                                        <li><a href="/lang/en">En</a></li>
+                                    </ul>
                                 </div>
+                            </div>
                             @elseif (session("locale") == "en")
-                                <div class="language-option">
-                                    <img src="img/flag.jpg" alt="">
-                                    <span>EN<i class="fa fa-angle-down"></i></span>
-                                    <div class="flag-dropdown">
-                                        <ul>
-                                            <li><a href="/lang/vi">Vi</a></li>
-                                            <li><a href="/lang/en">En</a></li>
-                                        </ul>
-                                    </div>
+                            <div class="language-option">
+                                <img src="img/flag.jpg" alt="">
+                                <span>EN<i class="fa fa-angle-down"></i></span>
+                                <div class="flag-dropdown">
+                                    <ul>
+                                        <li><a href="/lang/vi">Vi</a></li>
+                                        <li><a href="/lang/en">En</a></li>
+                                    </ul>
                                 </div>
+                            </div>
                             @endif
+                            @if(Auth::check() || session('user') )
                             <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign
-                                Out </a>
-
+                                out </a>
+                            @else
+                            <a class="btn btn-primary" href="{{ route('login') }}"> <i class="lni lni-enter"></i> Sign
+                                up </a>
+                            @endif
 
                         </div>
                     </div>
@@ -262,7 +266,9 @@
                         <div class="co-text">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script> All rights reserved | This
                                 template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
                                     href="https://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
