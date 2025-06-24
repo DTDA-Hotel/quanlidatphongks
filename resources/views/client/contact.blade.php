@@ -3,6 +3,7 @@
 @section("main")
      <!-- Contact Section Begin -->
     <section class="contact-section spad">
+         <p style="display:none;" id="current">contact</p>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">

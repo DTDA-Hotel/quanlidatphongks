@@ -6,7 +6,7 @@
         {{ session('error') }}
     </div>
 @endif
-
+ <p style="display:none;" id="current">home</p>
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="container">

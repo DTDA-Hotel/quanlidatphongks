@@ -74,10 +74,10 @@
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li id="home"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
-                <li id="room"><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
-                <li id="about"><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
-                <li id="other"><a href="#"><?php echo e(__("messages.Pages")); ?></a>
+                <li class="linkcheck" id="home"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
+                <li class="linkcheck" id="room"><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
+                <li class="linkcheck" id="about"><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                <li class="linkcheck" id="other"><a href="#"><?php echo e(__("messages.Pages")); ?></a>
                     <ul class="dropdown">
                         <!-- <li><a href="#">Room Details</a></li> -->
                         <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -85,8 +85,8 @@
                         <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                 </li>
-                <li id="news"><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
-                <li id="contact"><a href="">Contact</a></li>
+                <li class="linkcheck" id="news"><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
+                <li class="linkcheck" id="contact"><a href="">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -290,15 +290,20 @@
 
     <!-- Js Plugins -->
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
+          //  document.addEventListener("DOMContentLoaded", function() {
         const checkactive = <?php echo json_encode(session("active"), 15, 512) ?>;
         const current = document.getElementById("current");
         if (current) {
             if(checkactive.includes(current.innerText)){
-                document.getElementById(current.innerText).classList.add("active");
+                let linklist = document.querySelectorAll(".linkcheck");
+                linklist.forEach(link => {
+                    if(link.id === current.innerText){
+                        link.classList.add("active");
+                    }
+                });
             }
         }
-    });
+    // });
     </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
