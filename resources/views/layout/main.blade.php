@@ -24,6 +24,15 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .room-text {
+            color: white;
+            text-shadow: -1px -1px 0 black,
+                1px -1px 0 black,
+                -1px 1px 0 black,
+                1px 1px 0 black;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,9 +50,6 @@
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
             <i class="icon_close"></i>
-        </div>
-        <div class="search-icon  search-switch">
-            <i class="icon_search"></i>
         </div>
         <div class="header-configure-area">
             @if (session("locale") == "vi")
@@ -147,11 +153,9 @@
                             </div>
                             @endif
                             @if(Auth::check() || session('user') )
-                            <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> Sign
-                                out </a>
+                            <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> {{ __("messages.sign out") }} </a>
                             @else
-                            <a class="btn btn-primary" href="{{ route('login') }}"> <i class="lni lni-enter"></i> Sign
-                                up </a>
+                            <a class="btn btn-primary" href="{{ route('login') }}"> <i class="lni lni-enter"></i> {{ __("messages.sign in") }} </a>
                             @endif
 
                         </div>
@@ -189,9 +193,6 @@
                                     <li class="linkcheck" id="contact"><a href="{{ route("client.contact") }}">{{ __("messages.Contact") }}</a></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
-                                <i class="icon_search"></i>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -298,7 +299,7 @@
     <!-- Js Plugins -->
         <script>
             document.addEventListener("DOMContentLoaded", function() {
-        const checkactive = @json(session("active"));
+        // const checkactive = @json(session("active"));
         const current = document.getElementById("current");
         if (current) {
             if(checkactive.includes(current.innerText)){
@@ -306,6 +307,7 @@
             }
         }
     });
+    
     </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -20,4 +20,7 @@ return [
 "RVNtraandca"=>"Du lịch & cắm trại",
 "RVNevent"=>"Sự kiện & tiệc tùng",
 "ourbeautypic"=>"Hình ảnh đẹp từ các khách sạn của chúng tôi",
+"Booking Now"=>"Đặt ngay",
+"sign out"=>"Đăng xuất",
+"sign in"=>"Đăng nhập",
 ];
