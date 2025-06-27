@@ -101,6 +101,7 @@
                             {{ $k->updated_at }}
                           </td>
                           <td class="border border-start border-end border-black">
+                            <a href="{{ route("admin.showroom",["id"=>$k->id]) }}" class="btn btn-success">Chi tiết</a>
                             <a class="btn btn-warning" href="{{ route("admin.editroom",["id"=>$k->id]) }}">Sửa</a><br>
                             <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')" class="btn btn-danger" href="{{ route("admin.delroom",["id"=>$k->id]) }}">Xoá</a>
                           </td>

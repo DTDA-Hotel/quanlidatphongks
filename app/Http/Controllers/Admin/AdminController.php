@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function index()
     {
         session()->flush();
-        $data = ["cate","rooms","imgst","trash","acc"];
+        $data = ["cate","rooms","imgst","trash","acc","contact"];
         session(["check"=>$data]);
         return view("admin.index");
     }

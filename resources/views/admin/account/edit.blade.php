@@ -11,7 +11,12 @@
       <label class="form-label" for="">Password</label>
     <input class="form-control" type="text" name="password" id="password" value="{{ $user->password }}">
       <label class="form-label" for="role">Role</label>
-    <input class="form-control" type="number" name="role" id="role" value="{{ $user->role }}">
+    {{-- <input class="form-control" type="number" name="role" id="role" value="{{ $user->role }}"> --}}
+    <select class="form-select" name="role" id="role">
+      <option {{ $user->role=="user"?"selected":"" }} value="user">Người dùng</option>
+      <option {{ $user->role=="admin"?"selected":"" }} value="admin">Quản lí</option>
+      <option {{ $user->role=="staff"?"selected":"" }} value="staff">Nhân viên</option>
+    </select>
 
     <button type="submit" class="btn btn-primary">Cập nhật</button>
   

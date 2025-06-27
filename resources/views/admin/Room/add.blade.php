@@ -14,7 +14,7 @@
         @endforeach
     </select>
     <label for="pimage" class="form-label">Ảnh</label>
-        <input id="pimage" class="form-control" type="file" name="pimage">
+        <input accept="image/*" id="pimage" class="form-control" type="file" name="pimage">
         <label class="form-label" for="desc">Mô tả</label>
     <textarea id="desc" class="form-control" name="desc"></textarea>
     
