@@ -1,10 +1,21 @@
-@extends("layout.main")
-@section("main")
-@if(session('error'))
+<?php $__env->startSection("main"); ?>
+<?php if(session('error')): ?>
 <div class="alert alert-success">
-    {{ session('error') }}
+    <?php echo e(session('error')); ?>
+
 </div>
-@endif
+<?php endif; ?>
+
+<!-- Hero Section Begin -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hero-text">
+                    <h1>Sona A Luxury Hotel</h1>
+                    <p>Here are the best hotel booking sites, including recommendations for international
+                        travel and for finding low-priced hotel rooms.</p>
+                    <a href="#" class="primary-btn">Discover Now</a>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
@@ -46,10 +57,10 @@
         </div>
     </div>
     <div class="hero-slider owl-carousel">
-        <div class="hs-item set-bg" data-setbg="{{ url('storage/istockphoto-1360554439-612x612.jpg') }}"></div>
-        <div class="hs-item set-bg" data-setbg="{{ url('storage/nguyenle3579.png') }}"></div>
-        <div class="hs-item set-bg" data-setbg="{{ url('storage/anh-mo-ta.jpg') }}"></div>
-        <div class="hs-item set-bg" data-setbg="{{ url('storage/Vinpearl-Resort-Spa-Ha-Long.jpg') }}"></div>
+        <div class="hs-item set-bg" data-setbg="<?php echo e(url('storage/istockphoto-1360554439-612x612.jpg')); ?>"></div>
+        <div class="hs-item set-bg" data-setbg="<?php echo e(url('storage/nguyenle3579.png')); ?>"></div>
+        <div class="hs-item set-bg" data-setbg="<?php echo e(url('storage/anh-mo-ta.jpg')); ?>"></div>
+        <div class="hs-item set-bg" data-setbg="<?php echo e(url('storage/Vinpearl-Resort-Spa-Ha-Long.jpg')); ?>"></div>
     </div>
 </section>
 <!-- Hero Section End -->
@@ -70,7 +81,7 @@
             </div>
 
             <div class="row ">
-                @foreach ($rooms as $k)
+                <?php $__currentLoopData = $rooms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-3 col-sm-6 h-100 w-100 d-flex flex-column justify-content-between">
                     <div class="hp-room-item set-bg " style="
                     background-size: cover;
@@ -79,18 +90,18 @@
                     height: 300px;
                     border-radius: 10px;
                     overflow: hidden;"
-                        data-setbg="{{ url('storage/room/' . $k->pimage) }}">
+                        data-setbg="<?php echo e(url('storage/room/' . $k->pimage)); ?>">
                         <div class="hr-text">
-                            <h3 class="room-text">Name: {{ $k->name }}</h3>
-                            <h4 class="room-text">Amenities: {{ $k->amenities }}</h4>
-                                <h4 class="room-text" >Position: {{ $k->position }}</h4>
+                            <h3 class="room-text">Name: <?php echo e($k->name); ?></h3>
+                            <h4 class="room-text"">Amenities: <?php echo e($k->amenities); ?></h4>
+                                <h4 class="room-text" >Position: <?php echo e($k->position); ?></h4>
                                 <!-- <h2>199$<span>/Pernight</span></h2> -->
                                 <a class="room-text" href="#" class="primary-btn">More Details</a>
                         </div>
                     </div>
                 </div>
 
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </div>
         </div>
@@ -161,4 +172,5 @@
 </section>
 <!-- Blog Section End -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("layout.main", array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\Admin\Desktop\DATN\quanlidatphongks\resources\views/client/index.blade.php ENDPATH**/ ?>

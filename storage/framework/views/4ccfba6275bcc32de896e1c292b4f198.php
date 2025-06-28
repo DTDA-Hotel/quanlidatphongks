@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    {{-- {{ dd(session("active")) }} --}}
+    
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -52,7 +52,7 @@
             <i class="icon_close"></i>
         </div>
         <div class="header-configure-area">
-            @if (session("locale") == "vi")
+            <?php if(session("locale") == "vi"): ?>
             <div class="language-option">
                 <img src="img/vnflag.png" alt="">
                 <span>VI<i class="fa fa-angle-down"></i></span>
@@ -63,7 +63,7 @@
                     </ul>
                 </div>
             </div>
-            @elseif (session("locale") == "en")
+            <?php elseif(session("locale") == "en"): ?>
             <div class="language-option">
                 <img src="img/flag.jpg" alt="">
                 <span>EN<i class="fa fa-angle-down"></i></span>
@@ -75,15 +75,15 @@
                 </div>
 
             </div>
-            @endif
+            <?php endif; ?>
             <a href="#" class="bk-btn">Book Now!</a>
         </div>
         <nav class="mainmenu mobile-menu">
             <ul>
-                <li class="linkcheck" id="home"><a href="#"> {{ __("messages.Home") }} </a></li>
-                <li class="linkcheck" id="room"><a href="#">{{ __("messages.Rooms") }}</a></li>
-                <li class="linkcheck" id="about"><a href="#">{{ __("messages.AboutUs") }}</a></li>
-                <li class="linkcheck" id="other"><a href="#">{{ __("messages.Pages") }}</a>
+                <li id="home"><a href="#"> <?php echo e(__("messages.Home")); ?> </a></li>
+                <li id="room"><a href="#"><?php echo e(__("messages.Rooms")); ?></a></li>
+                <li id="about"><a href="#"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                <li id="other"><a href="#"><?php echo e(__("messages.Pages")); ?></a>
                     <ul class="dropdown">
                         <!-- <li><a href="#">Room Details</a></li> -->
                         <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -91,8 +91,8 @@
                         <li><a href="#">Phòng Tổng Thống</a></li>
                     </ul>
                 </li>
-                <li class="linkcheck" id="news"><a href=""> {{ __("messages.News") }} </a></li>
-                <li class="linkcheck" id="contact"><a href="">Contact</a></li>
+                <li id="news"><a href=""> <?php echo e(__("messages.News")); ?> </a></li>
+                <li id="contact"><a href="">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -108,7 +108,7 @@
         </ul>
     </div>
     <!-- Offcanvas Menu Section End -->
-    {{-- {{ App::getLocale() }} --}}
+    
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="top-nav">
@@ -128,8 +128,8 @@
                                 <a href="#"><i class="fa fa-tripadvisor"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
                             </div>
-                            <a href="#" class="bk-btn">{{ __("messages.Booking Now") }}</a>
-                            @if (session("locale") == "vi" || session("locale") == null || session("locale") == "")
+                            <a href="#" class="bk-btn"><?php echo e(__("messages.Booking Now")); ?></a>
+                            <?php if(session("locale") == "vi" || session("locale") == null || session("locale") == ""): ?>
                             <div class="language-option">
                                 <img src="img/vnflag.png" alt="">
                                 <span>VI<i class="fa fa-angle-down"></i></span>
@@ -140,7 +140,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            @elseif (session("locale") == "en")
+                            <?php elseif(session("locale") == "en"): ?>
                             <div class="language-option">
                                 <img src="img/flag.jpg" alt="">
                                 <span>EN<i class="fa fa-angle-down"></i></span>
@@ -151,12 +151,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            @endif
-                            @if(Auth::check() || session('user') )
-                            <a class="btn btn-primary" href="{{ route('logout') }}"> <i class="lni lni-exit"></i> {{ __("messages.sign out") }} </a>
-                            @else
-                            <a class="btn btn-primary" href="{{ route('login') }}"> <i class="lni lni-enter"></i> {{ __("messages.sign in") }} </a>
-                            @endif
+                            <?php endif; ?>
+                            <?php if(Auth::check() || session('user') ): ?>
+                            <a class="btn btn-primary" href="<?php echo e(route('logout')); ?>"> <i class="lni lni-exit"></i> <?php echo e(__("messages.sign out")); ?> </a>
+                            <?php else: ?>
+                            <a class="btn btn-primary" href="<?php echo e(route('login')); ?>"> <i class="lni lni-enter"></i> <?php echo e(__("messages.sign in")); ?> </a>
+                            <?php endif; ?>
 
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="{{ route("client.index") }}">
+                            <a href="<?php echo e(route("client.index")); ?>">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>
@@ -178,8 +178,8 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="linkcheck" id="home"><a href="{{ route("client.index") }}">{{ __("messages.Home") }}</a></li>
-                                    <li class="linkcheck" id="room"><a href="#"> {{ __("messages.Rooms") }} </a>
+                                    <li class="linkcheck" id="home"><a href="<?php echo e(route("client.index")); ?>"><?php echo e(__("messages.Home")); ?></a></li>
+                                    <li class="linkcheck" id="room"><a href="#"> <?php echo e(__("messages.Rooms")); ?> </a>
                                     <ul class="dropdown">
                                             <!-- <li><a href="#">Room Details</a></li> -->
                                             <li><a href="#">Phòng Thượng Hạng</a></li>
@@ -187,10 +187,10 @@
                                             <li><a href="#">Phòng Tổng Thống</a></li>
                                         </ul>
                                     </li>
-                                    <li class="linkcheck" id="about"><a href="{{ route("client.about") }}">{{ __("messages.AboutUs") }}</a></li>
-                                    <li class="linkcheck" id="other"><a href="./pages.html">{{ __("messages.Pages") }}</a></li>
-                                    <li class="linkcheck" id="news"><a href="./blog.html">{{ __("messages.News") }}</a></li>
-                                    <li class="linkcheck" id="contact"><a href="{{ route("client.contact") }}">{{ __("messages.Contact") }}</a></li>
+                                    <li class="linkcheck" id="about"><a href="<?php echo e(route("client.about")); ?>"><?php echo e(__("messages.AboutUs")); ?></a></li>
+                                    <li class="linkcheck" id="other"><a href="./pages.html"><?php echo e(__("messages.Pages")); ?></a></li>
+                                    <li class="linkcheck" id="news"><a href="./blog.html"><?php echo e(__("messages.News")); ?></a></li>
+                                    <li class="linkcheck" id="contact"><a href="<?php echo e(route("client.contact")); ?>"><?php echo e(__("messages.Contact")); ?></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -203,7 +203,7 @@
 
 
 
-    @yield("main")
+    <?php echo $__env->yieldContent("main"); ?>
 
 
 
@@ -298,19 +298,16 @@
 
     <!-- Js Plugins -->
         <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        // const checkactive = <?php echo json_encode(session("active"), 15, 512) ?>;
         const current = document.getElementById("current");
         if (current) {
             if(checkactive.includes(current.innerText)){
-                let linklist = document.querySelectorAll(".linkcheck");
-                linklist.forEach(link => {
-                    if(link.id === current.innerText){
-                        link.classList.add("active");
-                    }
-                });
+                document.getElementById(current.innerText).classList.add("active");
             }
         }
-
-    // });
+    });
+    
     </script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -323,4 +320,4 @@
 
 </body>
 
-</html>
+</html><?php /**PATH C:\Users\Admin\Desktop\DATN\quanlidatphongks\resources\views/layout/main.blade.php ENDPATH**/ ?>

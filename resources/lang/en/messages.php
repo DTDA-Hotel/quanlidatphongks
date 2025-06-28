@@ -20,4 +20,7 @@ return [
 "RVNtraandca"=>"Travel & camping",
 "RVNevent"=>"Event & party",
 "ourbeautypic"=>"Beautiful pictures from our hotels",
+'Booking Now'=>"Booking Now",
+"sign out"=>"Sign Out",
+"sign in"=>"Sign In",
 ];
