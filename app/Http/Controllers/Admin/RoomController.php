@@ -122,6 +122,8 @@ class RoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
+     
     public function update(Request $request,$id)
     {
         // $ro = Room::findOrFail($id);
@@ -132,13 +134,16 @@ class RoomController extends Controller
         $ame = $request->input("amenities");
         $pos = $request->input("position");
         $oimg = $request->input("old_img");
+        // dd($request->has("pimage"));
         if($request->hasFile("pimage")){
+            // dd(1);
             $img = $request->file("pimage");
             $filename = time()."_".$img->getClientOriginalName();
             $img->storeAs("/upload",$filename);
             Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$filename,"description"=>$desc,"amenities"=>$ame,"position"=>$pos]);
             return redirect(route("admin.roomlist"));
         }elseif($request->file("pimage")==null||$request->file("pimage")==[]){
+        //    dd(2);
             Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$oimg,"description"=>$desc,"amenities"=>$ame,"position"=>$pos]);
             return redirect(route("admin.roomlist"));
         }

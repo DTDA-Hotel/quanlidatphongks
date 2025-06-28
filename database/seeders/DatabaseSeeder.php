@@ -27,8 +27,5 @@ class DatabaseSeeder extends Seeder
             ["name" => "Phòng bình dân","created_at"=>now()],
             ["name" => "Phòng Vip","created_at"=>now()],
         ]);
-        $this->call([
-            KhachsanSeeder::class,
-        ]);
     }
 }

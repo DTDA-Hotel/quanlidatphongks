@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetLocale
@@ -18,6 +19,7 @@ class SetLocale
     public function handle(Request $request, Closure $next): Response
     {
         $locale =session('locale', config('app.locale'));
+                session::put(["locale"=>"vi"]);
         App::setLocale($locale);
         Log::info("Current locale in middleware:   $locale");
         return $next($request);
