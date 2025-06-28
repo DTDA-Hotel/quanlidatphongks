@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Session;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -19,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {      
         $middleware->prepend(\Illuminate\Session\Middleware\StartSession::class);
+                // session::put(["locale"=>"vi"]);
         $middleware->append(\App\Http\Middleware\SetLocale::class);
 
         $middleware->alias([

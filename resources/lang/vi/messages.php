@@ -20,4 +20,11 @@ return [
 "RVNtraandca"=>"Du lịch & cắm trại",
 "RVNevent"=>"Sự kiện & tiệc tùng",
 "ourbeautypic"=>"Hình ảnh đẹp từ các khách sạn của chúng tôi",
+"booknow"=>"Đặt ngay",
+"cin"=>"Nhận phòng",
+"cout"=>"Trả phòng",
+"guest"=>"Khách",
+"checkavai"=> "Tìm phòng",
+"search"=>"Tìm kiếm",
+'rn'=>"Số phòng",
 ];

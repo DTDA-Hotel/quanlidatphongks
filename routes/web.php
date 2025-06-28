@@ -7,10 +7,12 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageStorageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\ReviewController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\api\SearchController;
+use App\Http\Controllers\User\CustomerController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\ContactController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\RoomController as UserRoom;
 
 Route::get('lang/{locale}', function ($locale) {
     if (in_array($locale, ['vi', 'en'])) {
@@ -24,9 +26,11 @@ Route::prefix("/")->group(function () {
     Route::get("/about", [CustomerController::class, "about"])->name("client.about");
     Route::get("/contact", [CustomerController::class, "contact"])->name("client.contact");
     Route::post("/sendcontact", [ContactController::class, "store"])->name("client.postcontact");
-    
+    Route::get("/rooms",[UserRoom::class,"index"])->name("client.rooms");
+    Route::get("/roomlist/{id}",[UserRoom::class,"CateRoomList"])->name("client.roomlist");
+    Route::get("/roomdetail/{id}",[UserRoom::class,"show"])->name("client.roomdetail");
 });
-
+Route::get("/api",[SearchController::class,"search"])->name("api.search");
 Route::prefix("/administrator")->group(function () {
     Route::get("/", [AdminController::class, "index"])->name("admin.index");
     Route::prefix("contact")->group(function () {
