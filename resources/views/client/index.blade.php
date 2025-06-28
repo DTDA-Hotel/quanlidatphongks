@@ -5,17 +5,6 @@
     {{ session('error') }}
 </div>
 @endif
-
-<!-- Hero Section Begin -->
-<section class="hero-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="hero-text">
-                    <h1>Sona A Luxury Hotel</h1>
-                    <p>Here are the best hotel booking sites, including recommendations for international
-                        travel and for finding low-priced hotel rooms.</p>
-                    <a href="#" class="primary-btn">Discover Now</a>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
