@@ -71,6 +71,7 @@
               <li>
                 <a id="contact" href="{{ route("admin.contact") }}">Liên hệ</a>
               </li>
+              <li><a href="{{ route("admin.bills.index") }}" id="bill">Hóa đơn</a></li>
             </ul>
           </li>
         </ul>
@@ -224,6 +225,7 @@
                         <img src="{{ asset(url("")) }}/admin/images/profile/profile-image.png" alt="" />
                       </div>
                       <div>
+                        <span class="name"></span>
                         <p>Admin</p>
                       </div>
                     </div>

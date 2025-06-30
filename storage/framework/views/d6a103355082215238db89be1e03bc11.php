@@ -14,16 +14,18 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/bootstrap.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/font-awesome.min.css" type="text/css"> -->
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo e(asset(url(""))); ?>/css/style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -48,7 +50,7 @@
         <div class="header-configure-area">
             <?php if(session("locale") == "vi"): ?>
                 <div class="language-option">
-                    <img src="img/vnflag.png" alt="">
+                    <img src="<?php echo e(asset(url(""))); ?>/img/vnflag.png" alt="">
                     <span>VI<i class="fa fa-angle-down"></i></span>
                     <div class="flag-dropdown">
                         <ul>
@@ -59,7 +61,7 @@
                 </div>
             <?php elseif(session("locale") == "en"): ?>
                 <div class="language-option">
-                    <img src="img/flag.jpg" alt="">
+                    <img src="<?php echo e(asset(url(""))); ?>/img/flag.jpg" alt="">
                     <span>EN<i class="fa fa-angle-down"></i></span>
                     <div class="flag-dropdown">
                         <ul>
@@ -125,7 +127,7 @@
                             <a href="#" class="bk-btn">Booking Now</a>
                             <?php if(session("locale") == "vi" || session("locale") == null || session("locale") == ""): ?>
                                 <div class="language-option">
-                                    <img src="img/vnflag.png" alt="">
+                                    <img src="<?php echo e(asset(url(""))); ?>/img/vnflag.png" alt="">
                                     <span>VI<i class="fa fa-angle-down"></i></span>
                                     <div class="flag-dropdown">
                                         <ul>
@@ -136,7 +138,7 @@
                                 </div>
                             <?php elseif(session("locale") == "en"): ?>
                                 <div class="language-option">
-                                    <img src="img/flag.jpg" alt="">
+                                    <img src="<?php echo e(asset(url(""))); ?>/img/flag.jpg" alt="">
                                     <span>EN<i class="fa fa-angle-down"></i></span>
                                     <div class="flag-dropdown">
                                         <ul>
@@ -161,7 +163,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="<?php echo e(route("client.index")); ?>">
-                                <img src="img/logo.png" alt="">
+                                <img src="<?php echo e(asset(url(""))); ?>/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -171,12 +173,11 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li class="linkcheck" id="home"><a href="<?php echo e(route("client.index")); ?>"><?php echo e(__("messages.Home")); ?></a></li>
-                                    <li class="linkcheck" id="room"><a href="#"> <?php echo e(__("messages.Rooms")); ?> </a>
+                                    <li class="linkcheck" id="room"><a href="<?php echo e(route("client.rooms")); ?>"> <?php echo e(__("messages.Rooms")); ?> </a>
                                     <ul class="dropdown">
-                                            <!-- <li><a href="#">Room Details</a></li> -->
-                                            <li><a href="#">Phòng Thượng Hạng</a></li>
-                                            <li><a href="#">Phòng gia đình</a></li>
-                                            <li><a href="#">Phòng Tổng Thống</a></li>
+                                            <?php $__currentLoopData = session("category"); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <li><a href="<?php echo e(route("client.roomlist",["id"=>$k->id])); ?>"><?php echo e($k->name); ?></a></li>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </ul>
                                     </li>
                                     <li class="linkcheck" id="about"><a href="<?php echo e(route("client.about")); ?>"><?php echo e(__("messages.AboutUs")); ?></a></li>
@@ -213,7 +214,7 @@
                         <div class="ft-about">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="img/footer-logo.png" alt="">
+                                    <img src="<?php echo e(asset(url(""))); ?>/img/footer-logo.png" alt="">
                                 </a>
                             </div>
                             <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
@@ -305,14 +306,14 @@
         }
     // });
     </script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/jquery.magnific-popup.min.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/jquery.nice-select.min.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/jquery-ui.min.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/jquery.slicknav.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/owl.carousel.min.js"></script>
+    <script src="<?php echo e(asset(url(""))); ?>/js/main.js"></script>
 
 </body>
 

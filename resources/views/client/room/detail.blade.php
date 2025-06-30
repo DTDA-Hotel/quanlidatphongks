@@ -56,14 +56,23 @@
                                         <td>King Beds</td>
                                     </tr>
                                     <tr>
-                                        <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td class="r-o">Tiện ích:</td>
+                                        <td>{{ $room->amenities }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <p class="f-para">
                                 {{ $room->description }}
                             </p>
+                        </div>
+                    </div>
+                    <div class="imglist">
+                        <h4>Ảnh</h4>
+                        <div class="image-item">
+                            @foreach ($imglist as $khoanh)
+                                <img src="{{ asset(url("")) }}/storage/upload/{{ $khoanh->imgname }}" alt="" style="width: 100px; height: 100px; margin-right: 10px;">
+                                
+                            @endforeach
                         </div>
                     </div>
                     <div class="rd-reviews">
