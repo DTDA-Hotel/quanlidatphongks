@@ -7,6 +7,7 @@
         /* Màu xanh nước biển nhạt */
     }
 </style>
+<p style="display:none;" id="check">bill</p>
 <div class="table-responsive rounded shadow-sm p-3 table-light-blue">
     <table class="table table-bordered table-hover text-center align-middle bg-white">
         <thead style="background-color: #00acc1; color: white;">

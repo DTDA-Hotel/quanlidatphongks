@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\session;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -32,9 +33,12 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            // session::put("test",$request->session());
             return redirect()->route('client.index');
         }
-        return back();
+        return back()->withErrors([
+            'wrong' => 'The provided credentials do not match our records.',
+        ]);
     }
     public function logout(Request $request)
     {
