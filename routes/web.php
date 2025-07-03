@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BillController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\ImageStorageController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\ReviewController;
@@ -30,13 +31,16 @@ Route::prefix("/")->group(function () {
     Route::get("/roomlist/{id}",[UserRoom::class,"CateRoomList"])->name("client.roomlist");
     Route::get("/roomdetail/{id}",[UserRoom::class,"show"])->name("client.roomdetail");
 });
-Route::get("/api",[SearchController::class,"search"])->name("api.search");
+Route::get("/sapi",[SearchController::class,"autocompletingSearch"])->name("api.search");
+Route::get("/search",[SearchController::class,"search"])->name("search.pending");
+Route::get("/sres",[SearchController::class,"search"])->name("search.result");
 Route::prefix("/administrator")->group(function () {
     Route::get("/", [AdminController::class, "index"])->name("admin.index");
     Route::prefix("contact")->group(function () {
         Route::get("/", [ContactController::class, "index"])->name("admin.contact");
-        // Route::get("/delete/{id}", [AdminController::class, "destroy"])->name("admin.delcontact");
-        // Route::get("/view/{id}", [AdminController::class, "view"])->name("admin.viewcontact");
+    });
+    Route::prefix("/hotel")->group(function(){
+        Route::get("/",[HotelController::class,"index"])->name("admin.hotel");
     });
     Route::prefix("/category")->group(function () {
         Route::get("/", [CategoryController::class, "index"])->name("admin.category");

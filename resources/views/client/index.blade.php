@@ -1,6 +1,14 @@
-@extends("layout.main")
-@section("main")
-    @if(session('error'))
+@extends('layout.main')
+@section('main')
+<style>
+    #customGuest{
+        display: none; 
+        margin-top: 10px; 
+        height: 40px; 
+        width: 100%;
+    }
+</style>
+    @if (session('error'))
         <div class="alert alert-success">
             {{ session('error') }}
         </div>
@@ -19,47 +27,54 @@
                 </div>
                 <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
                     <div class="booking-form">
-                        <h3>{{ __("messages.booknow") }}</h3>
-                        <form action="#">
+                        <h3>{{ __('messages.booknow') }}</h3>
+                        <form action="{{ route('search.pending') }}" method="GET">
                             <div class="check-date">
-                                <label for="date-in">{{ __("messages.cin") }}:</label>
-                                <input type="text" class="date-input" id="date-in">
+                                <label for="date-in">{{ __('messages.cin') }}:</label>
+                                <input type="text" class="date-input" id="date-in" name="date_in">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="check-date">
-                                <label for="date-out">{{ __("messages.cout") }}:</label>
-                                <input type="text" class="date-input" id="date-out">
+                                <label for="date-out">{{ __('messages.cout') }}:</label>
+                                <input type="text" class="date-input" id="date-out" name="date_out">
                                 <i class="icon_calendar"></i>
                             </div>
                             <div class="select-option">
-                                <label for="guest">{{ __("messages.guest") }}:</label>
-                                <select id="guest">
-                                    <option value="">2 Adults</option>
-                                    <option value="">3 Adults</option>
+                                <label for="guest">{{ __('messages.guest') }}:</label>
+                                <select  onchange="tgg(this)" id="guest" name="guest">
+                                    <option value="2l1n">2 lớn+1 nhỏ</option>
+                                    <option value="4l3n">4 lớn 3 nhỏ</option>
+                                    <option value="custom">Nhập riêng</option>
                                 </select>
+                                <input class="form-control" type="text" id="customGuest" name="custom_guest" placeholder="Nhập số người"
+                                    min="1"/>
                             </div>
                             <div class="select-option">
-                                <label for="room">{{ __("messages.rn") }}:</label>
-                                <select id="room">
-                                    <option value="">1 Room</option>
-                                    <option value="">2 Room</option>
+                                <label for="room">{{ __('messages.rn') }}:</label>
+                                <select id="room" name="room">
+                                    <option value="1">1 Phòng</option>
+                                    <option value="2">2 Phòng</option>
+                                    <option value="3">3 Phòng</option>
+                                    <option value="4">4 Phòng</option>
+                                    <option value="10">10 Phòng</option>
                                 </select>
                             </div>
                             <div class="select-option">
                                 <label for="search">Vị trí:</label>
-                               <div style="position: relative;">
-  <input id="search" 
-         style="border-radius: 2px; border: 1px solid #ebebeb; height: 50px; line-height: 50px; outline: none; padding-left: 20px; width: 100%; float: none;" 
-         type="search" class="form-control" placeholder="Tìm kiếm...">
+                                <div style="position: relative;">
+                                    <input id="search" name="keyword"
+                                        style="border-radius: 2px; border: 1px solid #ebebeb; height: 50px; line-height: 50px; outline: none; padding-left: 20px; width: 100%; float: none;"
+                                        type="search" class="form-control" placeholder="Tìm kiếm...">
+                                    <input type="hidden" name="selected_id" id="selectedId">
 
-  <ul id="suggestions" 
-      style="list-style: none; margin: 0; padding: 0; border: 1px solid #ebebeb; border-top: none; max-height: 200px; overflow-y: auto; width: 100%; position: absolute; top: 100%; left: 0; background: #fff; z-index: 1000; display: none;">
-    <!-- Gợi ý sẽ được chèn vào đây -->
-  </ul>
-</div>
+                                    <ul id="suggestions"
+                                        style="list-style: none; margin: 0; padding: 0; border: 1px solid #ebebeb; border-top: none; max-height: 200px; overflow-y: auto; width: 100%; position: absolute; top: 100%; left: 0; background: #fff; z-index: 1000; display: none;">
+                                        <!-- Gợi ý sẽ được chèn vào đây -->
+                                    </ul>
+                                </div>
                                 <!-- <button type="submit"  class="input-group-text" id="visible-addon"><i class="fas fa-search"></i></button> -->
                             </div>
-                            <button type="submit">{{ __("messages.checkavai") }}</button>
+                            <button type="submit">{{ __('messages.checkavai') }}</button>
                         </form>
                     </div>
                 </div>
@@ -75,102 +90,102 @@
 
     <!-- About Us Section Begin -->
     <!-- <section class="aboutus-section spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="about-text">
-                            <div class="section-title">
-                                <span>About Us</span>
-                                <h2>Intercontinental LA <br />Westlake Hotel</h2>
-                            </div>
-                            <p class="f-para">Sona.com is a leading online accommodation site. We’re passionate about
-                                travel. Every day, we inspire and reach millions of travelers across 90 local websites in 41
-                                languages.</p>
-                            <p class="s-para">So when it comes to booking the perfect hotel, vacation rental, resort,
-                                apartment, guest house, or tree house, we’ve got you covered.</p>
-                            <a href="#" class="primary-btn about-btn">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-pic">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <img src="img/about/about-1.jpg" alt="">
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="img/about/about-2.jpg" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="about-text">
+                                    <div class="section-title">
+                                        <span>About Us</span>
+                                        <h2>Intercontinental LA <br />Westlake Hotel</h2>
+                                    </div>
+                                    <p class="f-para">Sona.com is a leading online accommodation site. We’re passionate about
+                                        travel. Every day, we inspire and reach millions of travelers across 90 local websites in 41
+                                        languages.</p>
+                                    <p class="s-para">So when it comes to booking the perfect hotel, vacation rental, resort,
+                                        apartment, guest house, or tree house, we’ve got you covered.</p>
+                                    <a href="#" class="primary-btn about-btn">Read More</a>
                                 </div>
                             </div>
+                            <div class="col-lg-6">
+                                <div class="about-pic">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <img src="img/about/about-1.jpg" alt="">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="img/about/about-2.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section> -->
+                </section> -->
     <!-- About Us Section End -->
 
     <!-- Services Section End -->
     <!-- <section class="services-section spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title">
-                            <span>What We Do</span>
-                            <h2>Discover Our Services</h2>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title">
+                                    <span>What We Do</span>
+                                    <h2>Discover Our Services</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="service-item">
+                                    <i class="flaticon-036-parking"></i>
+                                    <h4>Travel Plan</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="service-item">
+                                    <i class="flaticon-033-dinner"></i>
+                                    <h4>Catering Service</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="service-item">
+                                    <i class="flaticon-026-bed"></i>
+                                    <h4>Babysitting</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="service-item">
+                                    <i class="flaticon-024-towel"></i>
+                                    <h4>Laundry</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="service-item">
+                                    <i class="flaticon-044-clock-1"></i>
+                                    <h4>Hire Driver</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="service-item">
+                                    <i class="flaticon-012-cocktail"></i>
+                                    <h4>Bar & Drink</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="service-item">
-                            <i class="flaticon-036-parking"></i>
-                            <h4>Travel Plan</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="service-item">
-                            <i class="flaticon-033-dinner"></i>
-                            <h4>Catering Service</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="service-item">
-                            <i class="flaticon-026-bed"></i>
-                            <h4>Babysitting</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="service-item">
-                            <i class="flaticon-024-towel"></i>
-                            <h4>Laundry</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="service-item">
-                            <i class="flaticon-044-clock-1"></i>
-                            <h4>Hire Driver</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <div class="service-item">
-                            <i class="flaticon-012-cocktail"></i>
-                            <h4>Bar & Drink</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+                </section> -->
     <!-- Services Section End -->
     <br>
     <!-- Home Room Section Begin -->
@@ -180,31 +195,35 @@
                 <div class="row">
                     @foreach ($room as $k)
                         <div class="col-lg-3 col-md-6">
-                            <div class="hp-room-item set-bg" data-setbg="{{ asset(url("")) . "/storage/upload/$k->pimage" }}">
+                            <div class="hp-room-item set-bg"
+                                data-setbg="{{ asset(url('')) . "/storage/upload/$k->pimage" }}">
                                 <div class="hr-text">
-                                    <h3>{{ $k->name }}</h3>
-                                    <h2>199$<span>/Pernight</span></h2>
+                                    <h3 class="text-readable">{{ $k->name }}</h3>
+                                    <h2 class="text-readable">199$<span class="text-readable">/Pernight</span></h2>
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <td class="r-o">Size:</td>
-                                                <td>30 ft</td>
+                                                <td class="r-o text-readable">Size:</td>
+                                                <td class="text-readable">30 ft</td>
                                             </tr>
                                             <tr>
-                                                <td class="r-o">Capacity:</td>
-                                                <td>Max persion 5</td>
+                                                <td class="text-readable r-o">Capacity:</td>
+                                                <td class="text-readable">Max persion 5</td>
                                             </tr>
                                             <tr>
-                                                <td class="r-o">Bed:</td>
-                                                <td>King Beds</td>
+                                                <td class="r-o text-readable">Bed:</td>
+                                                <td class="text-readable">King Beds</td>
                                             </tr>
                                             <tr>
-                                                <td class="r-o">Services:</td>
-                                                <td>Wifi, Television, Bathroom,...</td>
+                                                <td class="r-o text-readable">Services:</td>
+                                                <td class="text-readable">Wifi, Television, Bathroom,...</td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <a href="{{ route("client.roomdetail",["id"=>$k->id]) }}" class="primary-btn">More Details</a>
+                                    <a style="  text-decoration: underline;" class="text-readable"
+                                        href="{{ route('client.roomdetail', ['id' => $k->id]) }}"
+                                        class="primary-btn">More
+                                        Details</a>
                                 </div>
                             </div>
                         </div>
@@ -217,57 +236,57 @@
 
     <!-- Testimonial Section Begin -->
     <!-- <section class="testimonial-section spad">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title">
-                            <span>Testimonials</span>
-                            <h2>What Customers Say?</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <div class="testimonial-slider owl-carousel">
-                            <div class="ts-item">
-                                <p>After a construction project took longer than expected, my husband, my daughter and I
-                                    needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
-                                    city, neighborhood and the types of housing options available and absolutely love our
-                                    vacation at Sona Hotel.</p>
-                                <div class="ti-author">
-                                    <div class="rating">
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star-half_alt"></i>
-                                    </div>
-                                    <h5> - Alexander Vasquez</h5>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="section-title">
+                                    <span>Testimonials</span>
+                                    <h2>What Customers Say?</h2>
                                 </div>
-                                <img src="img/testimonial-logo.png" alt="">
-                            </div>
-                            <div class="ts-item">
-                                <p>After a construction project took longer than expected, my husband, my daughter and I
-                                    needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
-                                    city, neighborhood and the types of housing options available and absolutely love our
-                                    vacation at Sona Hotel.</p>
-                                <div class="ti-author">
-                                    <div class="rating">
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star"></i>
-                                        <i class="icon_star-half_alt"></i>
-                                    </div>
-                                    <h5> - Alexander Vasquez</h5>
-                                </div>
-                                <img src="img/testimonial-logo.png" alt="">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="testimonial-slider owl-carousel">
+                                    <div class="ts-item">
+                                        <p>After a construction project took longer than expected, my husband, my daughter and I
+                                            needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
+                                            city, neighborhood and the types of housing options available and absolutely love our
+                                            vacation at Sona Hotel.</p>
+                                        <div class="ti-author">
+                                            <div class="rating">
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star-half_alt"></i>
+                                            </div>
+                                            <h5> - Alexander Vasquez</h5>
+                                        </div>
+                                        <img src="img/testimonial-logo.png" alt="">
+                                    </div>
+                                    <div class="ts-item">
+                                        <p>After a construction project took longer than expected, my husband, my daughter and I
+                                            needed a place to stay for a few nights. As a Chicago resident, we know a lot about our
+                                            city, neighborhood and the types of housing options available and absolutely love our
+                                            vacation at Sona Hotel.</p>
+                                        <div class="ti-author">
+                                            <div class="rating">
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star-half_alt"></i>
+                                            </div>
+                                            <h5> - Alexander Vasquez</h5>
+                                        </div>
+                                        <img src="img/testimonial-logo.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section> -->
+                </section> -->
     <!-- Testimonial Section End -->
 
     <!-- Blog Section Begin -->
@@ -331,5 +350,110 @@
         </div>
     </section>
     <!-- Blog Section End -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+            const customInput = document.getElementById("customGuest");
+    // console.log(customInput);
+function tgg(select){
 
+   
+        if (select.value == "custom") {
+            customInput.style.display = "block";
+            customInput.required = true;
+        } else {
+            customInput.style.display = "none";
+            customInput.required = false;
+        }
+    
+}
+
+        document.addEventListener("DOMContentLoaded", () => {
+ 
+
+
+            const searchInput = document.getElementById('search');
+            const suggestionsBox = document.getElementById('suggestions');
+            const selectedId = document.getElementById('selectedId');
+            let timeout;
+
+            document.addEventListener('click', (e) => {
+                if (!suggestionsBox.contains(e.target) && e.target !== searchInput) {
+                    suggestionsBox.style.display = 'none';
+                }
+            });
+
+            searchInput.addEventListener('input', () => {
+                clearTimeout(timeout);
+                const query = searchInput.value.trim();
+
+                if (query.length < 1) {
+                    suggestionsBox.innerHTML = '';
+                    suggestionsBox.style.display = 'none';
+                    return;
+                }
+
+                timeout = setTimeout(() => {
+                    fetch(`/sapi?query=${encodeURIComponent(query)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                suggestionsBox.innerHTML = '';
+
+                const { locations, rooms } = data;
+
+                if (locations.length === 0 && rooms.length === 0) {
+                    suggestionsBox.style.display = 'none';
+                    return;
+                }
+
+                if (locations.length > 0) {
+                    const locHeader = document.createElement('li');
+                    locHeader.textContent = 'Vị trí gợi ý';
+                    locHeader.style.fontWeight = 'bold';
+                    locHeader.style.padding = '8px';
+                    suggestionsBox.appendChild(locHeader);
+
+                    locations.forEach(loc => {
+                        const li = document.createElement('li');
+                        li.textContent = loc;
+                        li.style.padding = '8px';
+                        li.style.cursor = 'pointer';
+                        li.style.borderBottom = '1px solid #eee';
+                        li.addEventListener('click', () => {
+                            searchInput.value = loc;
+                            suggestionsBox.innerHTML = '';
+                            suggestionsBox.style.display = 'none';
+                        });
+                        suggestionsBox.appendChild(li);
+                    });
+                }
+
+                if (rooms.length > 0) {
+                    const roomHeader = document.createElement('li');
+                    roomHeader.textContent = 'Phòng gợi ý';
+                    roomHeader.style.fontWeight = 'bold';
+                    roomHeader.style.padding = '8px';
+                    suggestionsBox.appendChild(roomHeader);
+
+                    rooms.forEach(room => {
+                        const li = document.createElement('li');
+                        li.textContent = room.name;
+                        li.style.padding = '8px';
+                        li.style.cursor = 'pointer';
+                        li.style.borderBottom = '1px solid #eee';
+                        li.addEventListener('click', () => {
+                            searchInput.value = room.name;
+                            selectedId.value = room.id; // nếu muốn dùng
+                            suggestionsBox.innerHTML = '';
+                            suggestionsBox.style.display = 'none';
+                        });
+                        suggestionsBox.appendChild(li);
+                    });
+                }
+
+                suggestionsBox.style.display = 'block';
+            });
+    }, 300);
+});
+        });
+    </script>
 @endsection

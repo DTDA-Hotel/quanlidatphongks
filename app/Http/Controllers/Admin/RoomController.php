@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\khoanh;
 use App\Models\Room;
 use App\Http\Controllers\Controller;
+use App\Models\Hotel;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -18,7 +19,9 @@ class RoomController extends Controller
         // $cat = Category::get();
         foreach($roomlist as $k=>$v){
            $cats= Category::find($v['category_id']);
+           $hname= Hotel::find($v['hotel_id']);
            $roomlist[$k]["category_name"] = $cats["name"];
+              $roomlist[$k]["hotel_name"] = $hname["name"];
             // dd($t);
         }
         // dd($roomlist);
@@ -31,7 +34,8 @@ class RoomController extends Controller
     public function create()
     {
         $catelist = Category::get();
-        return view("admin.Room.add",compact("catelist"));
+        $hotel= Hotel::get();
+        return view("admin.Room.add",compact("catelist","hotel"));
     }
     public function totest(){
         return view("test");
@@ -53,7 +57,8 @@ class RoomController extends Controller
         $name = $request->input("name");
         $cate = $request->input("category");
         $amenities = $request->input("amenities");
-        $pos = $request->input("position");
+        $hotel = $request->input("hotel");
+        $bprice = $request->input("baseprice");
         $filename = "" ;
         $desc = $request->input("desc","");
         // try {
@@ -65,7 +70,7 @@ class RoomController extends Controller
             
         }
         
-            Room::create(["name"=>$name,"category_id"=>$cate,"pimage"=>$filename,"description"=>$desc,"amenities"=>$amenities,"position"=>$pos]);
+            Room::create(["name"=>$name,"category_id"=>$cate,"pimage"=>$filename,"description"=>$desc,"amenities"=>$amenities,"hotel_id"=>$hotel,"base_price"=>$bprice]);
             $idnewroom = Room::where("name",$name)->get();
             // dd($idnewroom);
             khoanh::create(["imgname"=>$filename,"roomid"=>$idnewroom[0]->id]);
@@ -83,6 +88,8 @@ class RoomController extends Controller
     {
         $roominf = Room::findOrFail($id);
            $cats= Category::find($roominf['category_id']);
+           $htname = Hotel::find($roominf['hotel_id']);
+            $roominf["hotel_name"] = $htname["name"];
            $roominf["category_name"] = $cats["name"];
             // dd($t);
         
@@ -96,8 +103,9 @@ class RoomController extends Controller
     public function edit( $id)
     {
         $roomdata = Room::findOrFail($id);
+        $hotels = Hotel::get();
         $cat = Category::get();
-        return view("admin.Room.edit",compact("roomdata","cat"));
+        return view("admin.Room.edit",compact("roomdata","cat","hotels"));
     }
     public function toStorePic($id){
         return view("admin.Room.store",compact("id"));
@@ -132,7 +140,8 @@ class RoomController extends Controller
         $cat= $request->input("category");
         $desc= $request->input("desc");
         $ame = $request->input("amenities");
-        $pos = $request->input("position");
+        $hotel = $request->input("hotel");
+        $bprice = $request->input("price");
         $oimg = $request->input("old_img");
         // dd($request->has("pimage"));
         if($request->hasFile("pimage")){
@@ -140,11 +149,11 @@ class RoomController extends Controller
             $img = $request->file("pimage");
             $filename = time()."_".$img->getClientOriginalName();
             $img->storeAs("/upload",$filename);
-            Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$filename,"description"=>$desc,"amenities"=>$ame,"position"=>$pos]);
+            Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$filename,"description"=>$desc,"amenities"=>$ame,"hotel_id"=>$hotel,"base_price"=>$bprice]);
             return redirect(route("admin.roomlist"));
         }elseif($request->file("pimage")==null||$request->file("pimage")==[]){
         //    dd(2);
-            Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$oimg,"description"=>$desc,"amenities"=>$ame,"position"=>$pos]);
+            Room::where("id",$id)->update(["name"=>$name,"category_id"=>$cat,"pimage"=>$oimg,"description"=>$desc,"amenities"=>$ame,"hotel_id"=>$hotel,"base_price"=>$bprice]);
             return redirect(route("admin.roomlist"));
         }
         

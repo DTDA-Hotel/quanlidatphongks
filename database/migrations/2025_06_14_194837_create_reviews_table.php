@@ -15,7 +15,7 @@ return new class extends Migration
            $table->id();
             $table->text("comment");
             $table->unsignedBigInteger("userid");
-            $table->foreign("userid")->references('id')->on("customers")->onDelete("cascade");
+            $table->foreign("userid")->references('id')->on("users")->onDelete("cascade");
             $table->unsignedBigInteger("roomid");
             $table->foreign("roomid")->references('id')->on("rooms")->onDelete("cascade");
             $table->tinyInteger("rating")->default(5);

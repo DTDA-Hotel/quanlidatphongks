@@ -5,8 +5,8 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-style mb-30">
-                  <h6 class="mb-10">Danh sách đánh giá</h6>
-                   <p style="display: none;" id="check">review</p>
+                  <h6 class="mb-10">Danh sách khách sạn</h6>
+                   <p style="display: none;" id="check">hotel</p>
                   <div class="table-wrapper table-responsive">
                     <table class="table">
                       <thead>
@@ -15,38 +15,34 @@
                             <h6>ID</h6>
                           </th>
                           <th>
-                            <h6>Bình luận</h6>
+                            <h6>Tên</h6>
                           </th>
                           <th>
-                            <h6>Người dùng</h6>
+                            <h6>Địa chỉ</h6>
                           </th>
                           <th>
-                            <h6>Phòng</h6>
+                            <h6>Số phòng</h6>
                           </th>
                           <th>
-                            <h6>Đánh giá</h6>
+                            <h6>Ảnh</h6>
                           </th>
+                            <th>
+                                <h6>Mô tả</h6>
+                            </th>
                           <th>
-                            <h6>Tạo ngày</h6>
-                          </th>
-                          <th>
-                            <h6>Sửa ngày</h6>
-                          </th>
-                        <th>
                             <h6>Hành động</h6>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($rv as $h)
+                        @foreach ($hotel as $h)
                         <tr>
                         <td>{{ $h->id }}</td>
-                        <td>{{ $h->comment }}</td>
-                        <td>{{ "$h->userid-$h->usern" }}</td>
-                        <td>{{ "$h->roomid-$h->roomn" }}</td>
-                        <td>{{ $h->rating }}</td>
-                        <td>{{ $h->created_at }}</td>
-                        <td>{{ $h->updated_at }}</td>
+                        <td>{{ $h->name }}</td>
+                        <td>{{ $h->address }}</td>
+                        <td>{{ $h->rooms}}</td>
+                        <td>{{ $h->pimage }}</td>
+                        <td>{{ $h->description }}</td>
                         <td>
                             <a href="#" class="btn btn-primary">a</a>
 

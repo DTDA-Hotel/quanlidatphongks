@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address')->nullable();
+            $table->Integer('rooms'); //số phòng của khách sạn
+            $table->string('pimage')->nullable(); // ảnh đại diện của khách sạn
+            $table->text('description')->nullable(); // mô tả về khách sạn
+            // $table->unsignedBigInteger('')->nullable();
             $table->timestamps();
         });
     }

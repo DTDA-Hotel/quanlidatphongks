@@ -1555,8 +1555,20 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string|null $description
+     * @property string|null $pimage
+     * @property mixed $rooms
+     * @property string|null $address
+     * @property string $name
      * @property int $id
+     * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Room> $rooms
+     * @property-read int|null $rooms_count
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereAddress($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereRooms($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel wherePimage($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereDescription($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Hotel>|Hotel newModelQuery()
@@ -2173,25 +2185,28 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property bool $isInUse
-     * @property string $position
      * @property string $amenities
      * @property bool $rating
      * @property string|null $review
+     * @property mixed $hotel_id
      * @property string|null $description
+     * @property mixed $base_price
      * @property string|null $pimage
      * @property mixed $category_id
      * @property string $name
      * @property int $id
      * @property-read \App\Models\Category $category
+     * @property-read \App\Models\Hotel $hotel
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereName($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereCategoryId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room wherePimage($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereBasePrice($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereHotelId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereReview($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereRating($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereAmenities($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room wherePosition($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereIsinuse($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Room>|Room whereUpdatedAt($value)

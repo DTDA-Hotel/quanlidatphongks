@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ $contact->name }}</td>
                     <td>{{ $contact->email }}</td>
-                    <td>{{ $contact->message }}</td>
+                    <td title="{{ $contact->message }}" style="max-width:200px ;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;  ">{{ $contact->message }}</td>
                     <td>{{ $contact->created_at->format('H:i:s d/m/Y') }}</td>
                     <td>
                         <a class="btn btn-warning" href="#">Xem?</a>
