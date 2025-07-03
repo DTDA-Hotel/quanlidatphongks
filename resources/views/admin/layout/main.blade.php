@@ -72,6 +72,7 @@
                 <a id="contact" href="{{ route("admin.contact") }}">Liên hệ</a>
               </li>
               <li><a href="{{ route("admin.bills.index") }}" id="bill">Hóa đơn</a></li>
+              <li><a href="{{ route("admin.hotel") }}" id="hotel">Khách sạn</a></li>
             </ul>
           </li>
         </ul>

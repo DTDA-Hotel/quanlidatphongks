@@ -3,33 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Review;
-use App\Models\Room;
-use App\Models\User;
+use App\Models\Hotel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class ReviewController extends Controller
+class HotelController extends Controller
 {
-
-    public function listReview($id){
-        $room = Room::get();
-        $user = User::get();
-        $rv = Review::where("roomid",$id)->get();
-        foreach($rv as $r=>$v){
-            $rv[$r]->usern = $user->where("id",$v->userid)->first()->name ?? "Unknown User";
-            $rv[$r]->roomn = $room->where("id",$v->roomid)->first()->name ?? "Unknown Room";
-        }
-
-        return view("admin.Room.review",compact("rv"));
-        
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
+        $hotel = Hotel::get();
+        return view('admin.hotel.index', compact('hotel'));
     }
 
     /**

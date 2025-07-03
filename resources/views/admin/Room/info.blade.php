@@ -54,7 +54,12 @@
 <h3>Mã phòng: {{ $roominf->id}}</h3>
 <h3>Tên: {{ $roominf->name}}</h3>
 <h3>Danh mục: {{ $roominf->category_name}}</h3>
-<h3>Mô tả: <p>{{ $roominf->description}}</p></h3>
+<h3>Mô tả: <span>{{ $roominf->description}}</span></h3>
+<h3>Giá gốc: {{ number_format($roominf->base_price,0,",",".") }} VND</h3>
+
+<h3>Tiện ích phòng: <span>{{ $roominf->amenities }}</span></h3>
+<h3>Khách sạn: {{ $roominf->hotel_name }}</h3>
+<h3>Tình trạng: {{ $roominf->isInUse==0?"Phòng trống":"Phòng đang sử dụng" }}</h3>
 
 
 

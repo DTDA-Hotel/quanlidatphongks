@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string("pimage")->nullable();
+            $table->bigInteger("base_price")->default(0); // giá phòng
             $table->text("description")->nullable();
-            $table->text("review")->nullable();
-            $table->tinyInteger("rating")->default(5);
+            $table->foreignId('hotel_id')->constrained()->onDelete('cascade'); // liên kết với khách sạn
+            // $table->text("review")->nullable();
             $table->text("amenities");
-            $table->string("position");
             $table->boolean("isInUse")->default(0);
             $table->timestamps();
         });

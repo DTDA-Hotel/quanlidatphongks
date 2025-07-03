@@ -14,43 +14,43 @@
                       <thead>
                         <tr>
                           <th>
-                            <h6>#</h6>
+                            <h6 class="d-flex justify-content-center">#</h6>
                           </th>
                           <th>
-                            <h6>Tên</h6>
+                            <h6 class="d-flex justify-content-center">Tên</h6>
                           </th>
                           <th>
-                            <h6>Danh mục</h6>
+                            <h6 class="d-flex justify-content-center">Danh mục</h6>
                           </th>
                           <th>
-                            <h6>Ảnh chính</h6>
+                            <h6 class="d-flex justify-content-center">Ảnh chính</h6>
                           </th>
                           <th>
-                            <h6>Mô tả</h6>
+                            <h6 class="d-flex justify-content-center">Mô tả</h6>
                           </th>
                           <th>
-                            <h6>Review</h6>
+                            <h6 class="d-flex justify-content-center">Review</h6>
                           </th>
                           <th>
-                            <h6>Đánh giá</h6>
+                            <h6 class="d-flex justify-content-center">Giá gốc</h6>
                           </th>
                           <th>
-                            <h6>Tiện ích phòng</h6>
+                            <h6 class="d-flex justify-content-center">Tiện ích phòng</h6>
                           </th>
                           <th>
-                            <h6>Vị trí</h6>
+                            <h6 class="d-flex justify-content-center">Khách sạn</h6>
                           </th>
                           <th>
-                            <h6>Tình trạng</h6>
+                            <h6 class="d-flex justify-content-center">Tình trạng</h6>
                           </th>
                           <th>
-                            <h6>Tạo ngày</h6>
+                            <h6 class="d-flex justify-content-center">Tạo ngày</h6>
                           </th>
                           <th>
-                            <h6>Sửa ngày</h6>
+                            <h6 class="d-flex justify-content-center">Sửa ngày</h6>
                           </th>
                           <th>
-                            <h6>Hành động</h6>
+                            <h6 class="d-flex justify-content-center">Hành động</h6>
                           </th>
                         </tr>
                         <!-- end table row-->
@@ -67,7 +67,7 @@
                           <td class="min-width border border-start border-end border-black">
                            {{ $k->category_name }}
                           </td>
-                          <td class="min-width border border-start border-end border-black">
+                          <td style="max-width:150px" class="min-width border border-start border-end border-black">
                             @if($k->pimage!=null||$k->pimage!="")
                             <img width="100%" src="{{ asset(url(""))."/storage/upload/".$k->pimage }}" alt="ảnh">
                             @else
@@ -75,29 +75,31 @@
                             @endif
                           </td>
                           <td style="max-width: 240px;" class="border border-start border-end border-black">
-                           <p style="max-width:200px ;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;  " > {{ $k->description }}</p>
+                           <p title="{{ $k->description }}" style="max-width:200px ;white-space: nowrap;overflow:hidden;text-overflow:ellipsis;  " > {{ $k->description }}</p>
                           </td>
                           <td class="min-width border border-start border-end border-black">
                             {{ $k->review }} 
+                            <a href="{{ route("admin.reviews",["id"=>$k->id]) }}" class="btn btn-success">Review</a>
+                            {{-- thêm rating trong review luôn --}}
                             {{-- (ô này vs ô đánh giá sẽ làm sau, vì cần phải xử lí riêng-
                              tức là phải có db riêng lưu mấy cái này.) --}}
                           </td>
                           <td class="border border-start border-end border-black">
-                            {{ $k->rating }}
+                            {{ number_format($k->base_price,0,",",".") }}VND
                           </td>
                           <td class="border border-start border-end border-black">
                           <p style="max-width:200px ;white-space: nowrap;overflow:hidden;text-overflow:ellipsis; " > {{ $k->amenities }}
                           </td>
                           <td class="border border-start border-end border-black">
-                            {{ $k->position }}
+                            {{ $k->hotel_name }}
                           </td>
                           <td class="border border-start border-end border-black">
                             {{ $k->isInUse==0?"Phòng trống" : "Phòng đang được sử dụng" }}
                           </td>
-                          <td class="min-width border border-start border-end border-black">
+                          <td style="max-width:110px" class="min-width border border-start border-end border-black">
                            {{ $k->created_at }}
                           </td>
-                          <td class="min-width border border-start border-end border-black">
+                          <td style="max-width:110px" class="min-width border border-start border-end border-black">
                             {{ $k->updated_at }}
                           </td>
                           <td class="border border-start border-end border-black">

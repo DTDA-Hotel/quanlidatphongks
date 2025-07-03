@@ -29,9 +29,15 @@
         <label class="form-label" for="amenities">Tiện ích</label>
         <textarea class="form-control" id="amenities"
             name="amenities">{{ old("amenities", $roomdata->amenities) }}</textarea>
-        <label class="form-label" for="position">Vị trí</label>
-        <input id="position" class="form-control" type="text" name="position"
-            value="{{ old("position", $roomdata->position) }}">
+        <label class="form-label" for="hotel">Khách sạn</label>
+        <select class="form-select" name="hotel" id="hotel">
+            @foreach ($hotels as $h)
+                <option {{ $roomdata->hotel_id == $h->id ? "selected" : "" }} value="{{ $h->id }}">{{ $h->name }}</option>
+            @endforeach
+        </select>
+        <label for="price" class="form-label">Giá gốc</label>
+        <input id="price" class="form-control" type="text" name="price"
+            value="{{ old("base_price", $roomdata->base_price) }}">
         <input type="hidden" name="old_img" value="{{ $roomdata->pimage }}">
         <br>
         <input type="submit" class="btn btn-primary" value="Sửa">

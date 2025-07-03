@@ -24,7 +24,18 @@
     <link rel="stylesheet" href="{{ asset(url("")) }}/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset(url("")) }}/css/style.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    .text-readable {
+text-shadow:
+        -1px -1px 2px rgba(0, 0, 0, 0.8),
+         1px -1px 2px rgba(0, 0, 0, 0.8),
+        -1px  1px 2px rgba(0, 0, 0, 0.8),
+         1px  1px 2px rgba(0, 0, 0, 0.8),
+         0px  0px 4px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+}
 
+</style>
 </head>
 
 <body>
@@ -92,10 +103,10 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="top-social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-tripadvisor"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
         </div>
         <ul class="top-widget">
             <li><i class="fa fa-phone"></i> 0865091023</li>
@@ -118,10 +129,10 @@
                     <div class="col-lg-6">
                         <div class="tn-right">
                             <div class="top-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
                             </div>
                             <a href="#" class="bk-btn">Booking Now</a>
                             @if (session("locale") == "vi" || session("locale") == null || session("locale") == "")
@@ -218,11 +229,10 @@
                             </div>
                             <p>We inspire and reach millions of travelers<br /> across 90 local websites</p>
                             <div class="fa-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-tripadvisor"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
