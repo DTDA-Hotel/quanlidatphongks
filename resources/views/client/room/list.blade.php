@@ -1,16 +1,28 @@
 @extends("layout.main")
 
 @section("main")
+
     <div class="breadcrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <h2>{{__("messages.Rooms")}}</h2>
+                        @if(!isset($catname))
                         <div class="bt-option">
-                            <a href="./home.html">{{ __("messages.Home") }}</a>
+                            <a href="{{ route("client.index") }}">{{ __("messages.Home") }}</a>
                             <span>{{__("messages.Rooms")}}</span>
+                            
                         </div>
+                        @else
+                        {{-- {{ dd($listbycat) }} --}}
+                        {{-- @if(isset($listbycat[0]->categoryname)) --}}
+                        <div class="bt-option">
+                            <a href="{{ route("client.index") }}">{{ __("messages.Home") }}</a>
+                            <a href="{{ route("client.rooms") }}">{{__("messages.Rooms")}}</a>
+                            <span>{{ session("curcat") }}</span>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -30,31 +42,31 @@
 
                 <div class="col-lg-4 col-md-6">
                     <div class="room-item">
-                        <img src="{{ asset(url("")) }}/img/room/room-1.jpg" alt="">
+                        <img src="{{ asset(url("")) }}/storage/upload/{{ $v->pimage }}" alt="">
                         <div class="ri-text">
-                            <h4>Premium King Room</h4>
+                            <h4>{{ $v->name }}</h4>
                             <h3>159$<span>/Pernight</span></h3>
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td class="r-o">Size:</td>
-                                        <td>30 ft</td>
+                                        <td class="r-o">Tiện ích:</td>
+                                        <td>{{ $v->amenities }}</td>
                                     </tr>
-                                    <tr>
+                                    {{-- <tr>
                                         <td class="r-o">Capacity:</td>
                                         <td>Max persion 3</td>
-                                    </tr>
-                                    <tr>
+                                    </tr> --}}
+                                    {{-- <tr>
                                         <td class="r-o">Bed:</td>
                                         <td>King Beds</td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
-                                        <td class="r-o">Services:</td>
-                                        <td>Wifi, Television, Bathroom,...</td>
+                                        <td class="r-o">Tình trạng:</td>
+                                        <td>{{ $v->isInUse === 0?"Còn phòng":"Đã hết phòng" }}</td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="primary-btn">More Details</a>
+                            <a href="{{ route("client.roomdetail",["id"=>$v->id]) }}" class="primary-btn">More Details</a>
                         </div>
                     </div>
                 </div>

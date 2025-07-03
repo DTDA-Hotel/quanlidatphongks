@@ -32,9 +32,12 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            // session::put("test",$request->session());
             return redirect()->route('client.index');
         }
-        return back();
+        return back()->withErrors([
+            'wrong' => 'The provided credentials do not match our records.',
+        ]);
     }
     public function logout(Request $request)
     {
