@@ -20,7 +20,7 @@ class AdminController extends Controller
         session(["check"=>$data]);
         // dd(\session("check"));
         // dd(session()->all());
-        dd(Auth::user());
+        // dd(Auth::user());
         return view("admin.index");
     }
 

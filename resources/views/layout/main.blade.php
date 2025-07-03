@@ -15,7 +15,6 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset(url("")) }}/css/bootstrap.min.css" type="text/css">
-    <!-- <link rel="stylesheet" href="{{ asset(url("")) }}/css/font-awesome.min.css" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset(url("")) }}/css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="{{ asset(url("")) }}/css/flaticon.css" type="text/css">
     <link rel="stylesheet" href="{{ asset(url("")) }}/css/owl.carousel.min.css" type="text/css">
@@ -44,9 +43,9 @@
         <div class="canvas-close">
             <i class="icon_close"></i>
         </div>
-        <div class="search-icon  search-switch">
+        <!-- <div class="search-icon  search-switch">
             <i class="icon_search"></i>
-        </div>
+        </div> -->
         <div class="header-configure-area">
             @if (session("locale") == "vi")
                 <div class="language-option">
@@ -186,9 +185,9 @@
                                     <li class="linkcheck" id="contact"><a href="{{ route("client.contact") }}">{{ __("messages.Contact") }}</a></li>
                                 </ul>
                             </nav>
-                            <div class="nav-right search-switch">
+                            <!-- <div class="nav-right search-switch">
                                 <i class="icon_search"></i>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
