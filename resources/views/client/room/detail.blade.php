@@ -40,7 +40,7 @@
                                     <a href="#">Booking Now</a>
                                 </div>
                             </div>
-                            <h2>159$<span>/Pernight</span></h2>
+                            <h2>{{ $room->base_price}}<span>/Pernight</span></h2>
                             <table>
                                 <tbody>
                                     <tr>
