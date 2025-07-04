@@ -199,7 +199,7 @@
                                 data-setbg="{{ asset(url('')) . "/storage/upload/$k->pimage" }}">
                                 <div class="hr-text">
                                     <h3 class="text-readable">{{ $k->name }}</h3>
-                                    <h2 class="text-readable">199$<span class="text-readable">/Pernight</span></h2>
+                                    <h2 class="text-readable">{{ $k->base_price }}VNĐ<span class="text-readable">/Pernight</span></h2>
                                     <table>
                                         <tbody>
                                             <tr>

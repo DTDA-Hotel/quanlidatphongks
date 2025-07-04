@@ -14,6 +14,8 @@ use App\Http\Controllers\User\AuthController;
 use App\Http\Controllers\User\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\RoomController as UserRoom;
+use App\Http\Controllers\User\PaymentController;
+// use Faker\Provider\ar_EG\Payment;
 
 Route::get('lang/{locale}', function ($locale) {
     if (in_array($locale, ['vi', 'en'])) {
@@ -30,6 +32,8 @@ Route::prefix("/")->group(function () {
     Route::get("/rooms",[UserRoom::class,"index"])->name("client.rooms");
     Route::get("/roomlist/{id}",[UserRoom::class,"CateRoomList"])->name("client.roomlist");
     Route::get("/roomdetail/{id}",[UserRoom::class,"show"])->name("client.roomdetail");
+    Route::get("/payment",[PaymentController::class,"index"])->name("client.payment");
+
 });
 Route::get("/sapi",[SearchController::class,"autocompletingSearch"])->name("api.search");
 Route::get("/search",[SearchController::class,"search"])->name("search.pending");
